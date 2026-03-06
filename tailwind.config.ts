@@ -9,8 +9,28 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primary: '#003B5C',
+        secondary: '#00838F',
+        accent: '#D4A843',
+        background: '#F7F8FA',
+        surface: '#FFFFFF',
+        textPrimary: '#1A1A2E',
+        textSecondary: '#5A6275',
+        border: '#DDE1E6',
+        success: '#198754',
+        warning: '#E6930A',
+        error: '#DC3545',
+      },
+      fontFamily: {
+        sans: ['var(--font-inter)'],
+        mono: ['var(--font-jetbrains-mono)'],
+      },
+      maxWidth: {
+        content: '1200px',
+      },
+      spacing: {
+        '18': '4.5rem',
+        '22': '5.5rem',
       },
     },
   },

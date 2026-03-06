@@ -1,0 +1,167 @@
+[
+  {
+    "id": "TRN-Q8-01",
+    "title": "Pharmaceutical Development (Q8) — Implementation Guide",
+    "type": "video",
+    "duration": "45 min",
+    "relatedGuideline": "Q8(R2)",
+    "category": "Quality",
+    "language": "English",
+    "datePublished": "2024-03-15",
+    "thumbnail": "/placeholder-training.svg"
+  },
+  {
+    "id": "TRN-Q9-01",
+    "title": "Quality Risk Management (Q9) — Principles and Tools",
+    "type": "webinar",
+    "duration": "60 min",
+    "relatedGuideline": "Q9(R1)",
+    "category": "Quality",
+    "language": "English",
+    "datePublished": "2024-01-20",
+    "thumbnail": "/placeholder-training.svg"
+  },
+  {
+    "id": "TRN-Q10-01",
+    "title": "Pharmaceutical Quality System (Q10) — Overview",
+    "type": "e-learning",
+    "duration": "30 min",
+    "relatedGuideline": "Q10",
+    "category": "Quality",
+    "language": "English",
+    "datePublished": "2023-11-10",
+    "thumbnail": "/placeholder-training.svg"
+  },
+  {
+    "id": "TRN-Q12-01",
+    "title": "Pharmaceutical Product Lifecycle Management (Q12) — Key Concepts",
+    "type": "video",
+    "duration": "50 min",
+    "relatedGuideline": "Q12",
+    "category": "Quality",
+    "language": "English",
+    "datePublished": "2023-09-05",
+    "thumbnail": "/placeholder-training.svg"
+  },
+  {
+    "id": "TRN-Q1A-01",
+    "title": "Stability Testing (Q1) — Practical Approaches",
+    "type": "webinar",
+    "duration": "55 min",
+    "relatedGuideline": "Q1A(R2)",
+    "category": "Quality",
+    "language": "English",
+    "datePublished": "2023-06-22",
+    "thumbnail": "/placeholder-training.svg"
+  },
+  {
+    "id": "TRN-Q3D-01",
+    "title": "Elemental Impurities (Q3D) — Risk Assessment",
+    "type": "document",
+    "duration": "40 min",
+    "relatedGuideline": "Q3D(R2)",
+    "category": "Quality",
+    "language": "English",
+    "datePublished": "2024-02-14",
+    "thumbnail": "/placeholder-training.svg"
+  },
+  {
+    "id": "TRN-E6-01",
+    "title": "Good Clinical Practice (E6) — Essentials",
+    "type": "e-learning",
+    "duration": "90 min",
+    "relatedGuideline": "E6(R2)",
+    "category": "Efficacy",
+    "language": "English",
+    "datePublished": "2024-04-01",
+    "thumbnail": "/placeholder-training.svg"
+  },
+  {
+    "id": "TRN-E8-01",
+    "title": "General Considerations for Clinical Studies (E8) — Updates",
+    "type": "webinar",
+    "duration": "45 min",
+    "relatedGuideline": "E8(R1)",
+    "category": "Efficacy",
+    "language": "English",
+    "datePublished": "2023-12-08",
+    "thumbnail": "/placeholder-training.svg"
+  },
+  {
+    "id": "TRN-E17-01",
+    "title": "Multi-Regional Clinical Trials (E17) — Design Principles",
+    "type": "video",
+    "duration": "50 min",
+    "relatedGuideline": "E17",
+    "category": "Efficacy",
+    "language": "English",
+    "datePublished": "2023-08-17",
+    "thumbnail": "/placeholder-training.svg"
+  },
+  {
+    "id": "TRN-S2-01",
+    "title": "Genotoxicity Testing (S2) — Data Interpretation",
+    "type": "video",
+    "duration": "40 min",
+    "relatedGuideline": "S2(R1)",
+    "category": "Safety",
+    "language": "English",
+    "datePublished": "2024-01-30",
+    "thumbnail": "/placeholder-training.svg"
+  },
+  {
+    "id": "TRN-S9-01",
+    "title": "Nonclinical Evaluation for Anticancer Pharmaceuticals (S9)",
+    "type": "document",
+    "duration": "35 min",
+    "relatedGuideline": "S9",
+    "category": "Safety",
+    "language": "English",
+    "datePublished": "2023-07-12",
+    "thumbnail": "/placeholder-training.svg"
+  },
+  {
+    "id": "TRN-M3-01",
+    "title": "Nonclinical Safety Studies for Clinical Trials (M3) — Overview",
+    "type": "e-learning",
+    "duration": "60 min",
+    "relatedGuideline": "M3(R2)",
+    "category": "Multidisciplinary",
+    "language": "English",
+    "datePublished": "2023-10-25",
+    "thumbnail": "/placeholder-training.svg"
+  },
+  {
+    "id": "TRN-M4-01",
+    "title": "Common Technical Document (M4) — Structure and Format",
+    "type": "video",
+    "duration": "70 min",
+    "relatedGuideline": "M4(R4)",
+    "category": "Multidisciplinary",
+    "language": "English",
+    "datePublished": "2024-05-10",
+    "thumbnail": "/placeholder-training.svg"
+  },
+  {
+    "id": "TRN-M7-01",
+    "title": "Mutagenic Impurities (M7) — Risk Assessment Framework",
+    "type": "webinar",
+    "duration": "55 min",
+    "relatedGuideline": "M7(R2)",
+    "category": "Multidisciplinary",
+    "language": "English",
+    "datePublished": "2024-03-28",
+    "thumbnail": "/placeholder-training.svg"
+  },
+  {
+    "id": "TRN-M10-01",
+    "title": "Bioanalytical Method Validation (M10) — Implementation",
+    "type": "e-learning",
+    "duration": "45 min",
+    "relatedGuideline": "M10",
+    "category": "Multidisciplinary",
+    "language": "English",
+    "datePublished": "2024-02-20",
+    "thumbnail": "/placeholder-training.svg"
+  }
+]
