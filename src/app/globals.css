@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-background text-textPrimary font-sans;
+    @apply bg-background text-textPrimary font-sans antialiased;
   }
 
   h1 {
@@ -30,7 +30,7 @@
   }
 
   .card {
-    @apply bg-surface border border-border rounded-lg shadow-[0_1px_3px_rgba(0,0,0,0.06)] transition-shadow duration-200 hover:shadow-[0_4px_12px_rgba(0,0,0,0.1)];
+    @apply bg-surface rounded-lg border border-border shadow-card transition-all duration-200 hover:shadow-cardHover hover:-translate-y-px;
   }
 
   .section-gap {
@@ -39,5 +39,29 @@
 
   .container-content {
     @apply max-w-content mx-auto px-6;
+  }
+
+  .pill-button {
+    @apply inline-flex items-center justify-center rounded-full bg-white text-textPrimary px-4 py-1.5 text-sm font-semibold transition-colors hover:bg-gray-100;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-primary text-white px-5 py-2.5 text-sm font-semibold transition-all hover:opacity-90 hover:shadow-md active:scale-95;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border-2 border-primary text-primary px-5 py-2.5 text-sm font-semibold transition-all hover:bg-primary hover:text-white active:scale-95;
+  }
+
+  .section-divider {
+    @apply border-t border-border;
+  }
+
+  .section-label {
+    @apply text-xs font-bold uppercase tracking-widest text-primary mb-3;
+  }
+
+  .page-hero {
+    @apply bg-primary text-white;
   }
 }

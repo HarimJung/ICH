@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   title: "ICH — International Council for Harmonisation",
   description:
     "The International Council for Harmonisation of Technical Requirements for Pharmaceuticals for Human Use (ICH)",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
