@@ -1,0 +1,82 @@
+[
+  {
+    "id": "CON-2026-001",
+    "guidelineId": "Q14",
+    "title": "Public Consultation: Q14 Analytical Procedure Development and Revision",
+    "status": "open",
+    "openDate": "2026-01-15",
+    "closeDate": "2026-04-15",
+    "description": "ICH invites comments on the draft Q14 guideline covering analytical procedure development, including the lifecycle approach to method validation and continuous improvement.",
+    "category": "Quality"
+  },
+  {
+    "id": "CON-2026-002",
+    "guidelineId": "M13A",
+    "title": "Public Consultation: M13A Bioequivalence for Immediate-Release Solid Oral Dosage Forms",
+    "status": "open",
+    "openDate": "2026-02-01",
+    "closeDate": "2026-05-01",
+    "description": "Stakeholders are invited to provide feedback on the draft M13A guideline establishing harmonised approaches to bioequivalence studies for immediate-release solid oral dosage forms.",
+    "category": "Multidisciplinary"
+  },
+  {
+    "id": "CON-2026-003",
+    "guidelineId": "S12",
+    "title": "Public Consultation: S12 Nonclinical Biodistribution Considerations for Gene Therapy Products",
+    "status": "open",
+    "openDate": "2026-02-10",
+    "closeDate": "2026-05-10",
+    "description": "Comments are sought on the S12 guideline addressing nonclinical biodistribution study considerations for gene therapy products.",
+    "category": "Safety"
+  },
+  {
+    "id": "CON-2026-004",
+    "guidelineId": "E20",
+    "title": "Public Consultation: E20 Adaptive Clinical Trials",
+    "status": "open",
+    "openDate": "2026-03-01",
+    "closeDate": "2026-06-01",
+    "description": "ICH seeks public input on the E20 guideline providing a harmonised framework for the design, conduct, and reporting of adaptive clinical trials.",
+    "category": "Efficacy"
+  },
+  {
+    "id": "CON-2025-010",
+    "guidelineId": "Q13",
+    "title": "Public Consultation: Q13 Continuous Manufacturing of Drug Substances and Drug Products",
+    "status": "closed",
+    "openDate": "2025-06-01",
+    "closeDate": "2025-09-01",
+    "description": "This consultation on the Q13 guideline for continuous manufacturing has concluded. Comments have been reviewed and incorporated into the final document.",
+    "category": "Quality"
+  },
+  {
+    "id": "CON-2025-011",
+    "guidelineId": "S11",
+    "title": "Public Consultation: S11 Nonclinical Safety Testing in Support of Development of Paediatric Medicines",
+    "status": "closed",
+    "openDate": "2025-07-15",
+    "closeDate": "2025-10-15",
+    "description": "The consultation period for S11, which addresses nonclinical safety considerations for paediatric medicines, has closed.",
+    "category": "Safety"
+  },
+  {
+    "id": "CON-2025-012",
+    "guidelineId": "M10",
+    "title": "Public Consultation: M10 Bioanalytical Method Validation and Study Sample Analysis",
+    "status": "closed",
+    "openDate": "2025-08-01",
+    "closeDate": "2025-11-01",
+    "description": "The public comment period for M10 on bioanalytical method validation has concluded. The guideline is progressing to Step 4.",
+    "category": "Multidisciplinary"
+  },
+  {
+    "id": "CON-2026-005",
+    "guidelineId": "Q12",
+    "title": "Upcoming Consultation: Q12(R1) Lifecycle Management — Revision",
+    "status": "upcoming",
+    "openDate": "2026-05-01",
+    "closeDate": "2026-08-01",
+    "description": "A public consultation is planned for the revision of Q12 on lifecycle management of pharmaceutical products. The consultation period will open in May 2026.",
+    "category": "Quality"
+  }
+]

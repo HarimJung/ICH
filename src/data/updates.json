@@ -1,0 +1,143 @@
+[
+  {
+    "id": "UPD-2026-001",
+    "type": "step_change",
+    "title": "Q13 Reaches Step 4 — Adopted by ICH Assembly",
+    "description": "The ICH Assembly has adopted Q13 Continuous Manufacturing of Drug Substances and Drug Products, advancing it from Step 3 to Step 4.",
+    "date": "2026-03-05",
+    "guidelineId": "Q13",
+    "fromStep": 3,
+    "toStep": 4,
+    "isNew": true
+  },
+  {
+    "id": "UPD-2026-002",
+    "type": "step_change",
+    "title": "M10 Advances to Step 3 — Regulatory Review",
+    "description": "M10 Bioanalytical Method Validation and Study Sample Analysis has advanced to Step 3 following the close of public consultation.",
+    "date": "2026-03-01",
+    "guidelineId": "M10",
+    "fromStep": 2,
+    "toStep": 3,
+    "isNew": true
+  },
+  {
+    "id": "UPD-2026-003",
+    "type": "consultation",
+    "title": "Public Consultation Opens for E20 Adaptive Clinical Trials",
+    "description": "ICH has opened a 90-day public consultation period for the draft E20 guideline on adaptive clinical trial design.",
+    "date": "2026-03-01",
+    "guidelineId": "E20",
+    "isNew": true
+  },
+  {
+    "id": "UPD-2026-004",
+    "type": "consultation",
+    "title": "S12 Gene Therapy Biodistribution — Consultation Extended",
+    "description": "The public consultation for S12 has been extended by 30 days to allow additional stakeholder feedback on biodistribution study requirements.",
+    "date": "2026-02-28",
+    "guidelineId": "S12",
+    "isNew": true
+  },
+  {
+    "id": "UPD-2026-005",
+    "type": "step_change",
+    "title": "S11 Paediatric Safety Guideline Reaches Step 2b",
+    "description": "S11 Nonclinical Safety Testing in Support of Development of Paediatric Medicines has reached Step 2b, with the draft released to regulatory members.",
+    "date": "2026-02-20",
+    "guidelineId": "S11",
+    "fromStep": 2,
+    "toStep": 2,
+    "isNew": false
+  },
+  {
+    "id": "UPD-2026-006",
+    "type": "training",
+    "title": "New Training Module: Q8(R2) Pharmaceutical Development",
+    "description": "A comprehensive training video on implementing Q8(R2) quality by design principles is now available in the training library.",
+    "date": "2026-02-15",
+    "guidelineId": "Q8(R2)",
+    "isNew": false
+  },
+  {
+    "id": "UPD-2026-007",
+    "type": "training",
+    "title": "E6(R2) GCP Training Webinar Recording Available",
+    "description": "The recorded webinar on E6(R2) Good Clinical Practice implementation is now available for on-demand viewing.",
+    "date": "2026-02-10",
+    "guidelineId": "E6(R2)",
+    "isNew": false
+  },
+  {
+    "id": "UPD-2026-008",
+    "type": "revision",
+    "title": "Q3C(R8) Revision Published — Updated Residual Solvents Limits",
+    "description": "The latest revision of Q3C on impurities in residual solvents has been published with updated permitted daily exposure limits for select solvents.",
+    "date": "2026-02-05",
+    "guidelineId": "Q3C(R8)",
+    "isNew": false
+  },
+  {
+    "id": "UPD-2026-009",
+    "type": "revision",
+    "title": "M4(R4) Common Technical Document — Format Update",
+    "description": "M4(R4) has been updated with revised formatting guidance for the Common Technical Document to improve electronic submission compatibility.",
+    "date": "2026-01-28",
+    "guidelineId": "M4(R4)",
+    "isNew": false
+  },
+  {
+    "id": "UPD-2026-010",
+    "type": "step_change",
+    "title": "E19 Reaches Step 5 — Implementation Phase Begins",
+    "description": "E19 Optimisation of Safety Data Collection has reached Step 5 and is now being implemented by regulatory authorities in member regions.",
+    "date": "2026-01-25",
+    "guidelineId": "E19",
+    "fromStep": 4,
+    "toStep": 5,
+    "isNew": false
+  },
+  {
+    "id": "UPD-2026-011",
+    "type": "step_change",
+    "title": "Q14 Analytical Procedure Development Reaches Step 2a",
+    "description": "Q14 has reached Step 2a with the draft guideline released for public consultation across all ICH regions.",
+    "date": "2026-01-20",
+    "guidelineId": "Q14",
+    "fromStep": 1,
+    "toStep": 2,
+    "isNew": false
+  },
+  {
+    "id": "UPD-2026-012",
+    "type": "news",
+    "title": "ICH Welcomes SAHPRA as New Regulatory Member",
+    "description": "The South African Health Products Regulatory Authority (SAHPRA) has been admitted as a regulatory member of ICH, expanding the global harmonisation network.",
+    "date": "2026-01-15",
+    "isNew": false
+  },
+  {
+    "id": "UPD-2026-013",
+    "type": "news",
+    "title": "ICH Strategic Plan 2026–2030 Published",
+    "description": "The ICH Assembly has endorsed the new five-year strategic plan outlining priorities for guideline development, digital transformation, and stakeholder engagement.",
+    "date": "2026-01-10",
+    "isNew": false
+  },
+  {
+    "id": "UPD-2026-014",
+    "type": "event",
+    "title": "ICH Public Meeting — Brussels, June 2026",
+    "description": "ICH will host a public meeting in Brussels on June 15–16, 2026, providing updates on guideline development and implementation progress.",
+    "date": "2026-01-08",
+    "isNew": false
+  },
+  {
+    "id": "UPD-2026-015",
+    "type": "event",
+    "title": "ICH Assembly Meeting — Fukuoka, November 2026",
+    "description": "The ICH Assembly will convene in Fukuoka, Japan in November 2026 for its biannual meeting to review guideline progress and strategic initiatives.",
+    "date": "2026-01-05",
+    "isNew": false
+  }
+]

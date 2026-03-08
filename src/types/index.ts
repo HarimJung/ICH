@@ -43,3 +43,61 @@ export interface Training {
   datePublished: string;
   thumbnail: string;
 }
+
+export type ConsultationStatus = "open" | "closed" | "upcoming";
+
+export interface Consultation {
+  id: string;
+  guidelineId: string;
+  title: string;
+  status: ConsultationStatus;
+  openDate: string;
+  closeDate: string;
+  description: string;
+  category: Category;
+}
+
+export type UpdateType = "step_change" | "consultation" | "training" | "revision" | "news" | "event";
+export type ChangeType = "step_change";
+
+export interface Update {
+  id: string;
+  type: UpdateType;
+  title: string;
+  description: string;
+  date: string;
+  guidelineId?: string;
+  fromStep?: number;
+  toStep?: number;
+  isNew: boolean;
+}
+
+export interface GovernanceMember {
+  name: string;
+  fullName: string;
+  region: string;
+  type: "regulatory" | "industry";
+  flag: string;
+  since: number;
+}
+
+export interface Observer {
+  name: string;
+  fullName: string;
+  region: string;
+  flag: string;
+}
+
+export interface Assembly {
+  id: string;
+  title: string;
+  date: string;
+  location: string;
+  status: "upcoming" | "past";
+}
+
+export interface GovernanceData {
+  members: GovernanceMember[];
+  observers: Observer[];
+  assemblies: Assembly[];
+}

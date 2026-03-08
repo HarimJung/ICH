@@ -9,9 +9,11 @@ const footerLinks = {
   ],
   Resources: [
     { href: "/training", label: "Training Materials" },
+    { href: "/consultations", label: "Public Consultations" },
+    { href: "/implementation", label: "Implementation Status" },
+    { href: "/updates", label: "Latest Updates" },
+    { href: "/meddra", label: "MedDRA" },
     { href: "/about", label: "About ICH" },
-    { href: "#", label: "Events" },
-    { href: "#", label: "Press Releases" },
   ],
   Members: [
     { href: "#", label: "FDA (US)" },

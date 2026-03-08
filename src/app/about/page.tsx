@@ -1,16 +1,9 @@
-import { Users, Globe, FileCheck, ArrowRight } from "lucide-react";
+import { Users, Globe, FileCheck, ArrowRight, Calendar, MapPin } from "lucide-react";
 import Link from "next/link";
+import governance from "@/data/governance.json";
+import { GovernanceData } from "@/types";
 
-const members = [
-  { name: "FDA", fullName: "U.S. Food and Drug Administration", region: "United States" },
-  { name: "EMA", fullName: "European Medicines Agency", region: "European Union" },
-  { name: "PMDA", fullName: "Pharmaceuticals and Medical Devices Agency", region: "Japan" },
-  { name: "Health Canada", fullName: "Health Canada", region: "Canada" },
-  { name: "Swissmedic", fullName: "Swiss Agency for Therapeutic Products", region: "Switzerland" },
-  { name: "ANVISA", fullName: "Agência Nacional de Vigilância Sanitária", region: "Brazil" },
-  { name: "NMPA", fullName: "National Medical Products Administration", region: "China" },
-  { name: "MFDS", fullName: "Ministry of Food and Drug Safety", region: "Republic of Korea" },
-];
+const gov = governance as GovernanceData;
 
 const steps = [
   {
@@ -130,15 +123,86 @@ export default function AboutPage() {
       {/* Members */}
       <section className="section-gap">
         <div className="container-content">
-          <h2 className="mb-8">Regulatory Members &amp; Observers</h2>
+          <h2 className="mb-8">Members</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {members.map((m) => (
+            {gov.members.map((m) => (
               <div key={m.name} className="card p-5">
-                <div className="font-semibold text-primary mb-1">{m.name}</div>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-lg">{m.flag}</span>
+                  <span className="font-semibold text-primary">{m.name}</span>
+                </div>
                 <div className="text-sm text-textSecondary mb-1">
                   {m.fullName}
                 </div>
-                <div className="text-xs text-textSecondary">{m.region}</div>
+                <div className="flex items-center justify-between text-xs text-textSecondary">
+                  <span>{m.region}</span>
+                  <span className={`rounded-full px-2 py-0.5 font-medium ${
+                    m.type === "regulatory"
+                      ? "bg-blue-50 text-primary"
+                      : "bg-teal-50 text-secondary"
+                  }`}>
+                    {m.type === "regulatory" ? "Regulatory" : "Industry"}
+                  </span>
+                </div>
+                <div className="mt-2 text-xs text-textSecondary">
+                  Member since {m.since}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Observers */}
+      <section className="section-gap bg-surface">
+        <div className="container-content">
+          <h2 className="mb-8">Observers</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {gov.observers.map((o) => (
+              <div key={o.name} className="card p-5">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-lg">{o.flag}</span>
+                  <span className="font-semibold text-primary">{o.name}</span>
+                </div>
+                <div className="text-sm text-textSecondary mb-1">
+                  {o.fullName}
+                </div>
+                <div className="text-xs text-textSecondary">{o.region}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Assembly Schedule */}
+      <section className="section-gap">
+        <div className="container-content">
+          <h2 className="mb-8">Assembly Schedule</h2>
+          <div className="space-y-4">
+            {gov.assemblies.map((a) => (
+              <div key={a.id} className="card flex items-center gap-6 p-6">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary/10">
+                  <Calendar className="h-5 w-5 text-secondary" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-1">
+                    <h3 className="text-lg">{a.title}</h3>
+                    <span className={`rounded-full px-3 py-1 text-xs font-semibold ${
+                      a.status === "upcoming"
+                        ? "bg-green-50 text-green-800"
+                        : "bg-gray-100 text-gray-600"
+                    }`}>
+                      {a.status === "upcoming" ? "Upcoming" : "Past"}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-4 text-sm text-textSecondary">
+                    <span>{a.date}</span>
+                    <span className="flex items-center gap-1">
+                      <MapPin className="h-3.5 w-3.5" />
+                      {a.location}
+                    </span>
+                  </div>
+                </div>
               </div>
             ))}
           </div>

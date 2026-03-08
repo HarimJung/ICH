@@ -363,7 +363,7 @@
     "pdfUrl": "#",
     "relatedGuidelines": ["Q2(R2)", "Q8(R2)", "Q9(R1)"],
     "relatedTraining": ["TRN-Q14-01"],
-    "hasActiveConsultation": false,
+    "hasActiveConsultation": true,
     "implementationStatus": { "FDA": true, "EMA": true, "PMDA": true, "HC": false, "ANVISA": false },
     "tags": ["analytical development", "analytical target profile", "method development", "multivariate", "ICH"]
   },

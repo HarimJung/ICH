@@ -1,0 +1,16 @@
+{
+  "name": "MedDRA",
+  "fullName": "Medical Dictionary for Regulatory Activities",
+  "description": "MedDRA is a rich and highly specific standardised medical terminology to facilitate sharing of regulatory information internationally for medical products used by humans. It is used for registration, documentation and safety monitoring of medical products through all phases of the regulatory cycle.",
+  "currentVersion": "27.1",
+  "languages": ["English", "Chinese", "Czech", "Dutch", "French", "German", "Hungarian", "Italian", "Japanese", "Korean", "Portuguese", "Spanish"],
+  "externalUrl": "https://www.meddra.org",
+  "keyFacts": [
+    "Used by regulatory authorities and pharmaceutical companies in over 70 countries",
+    "Supports pharmacovigilance and safety reporting globally",
+    "Updated twice annually (March and September)",
+    "Available in 12 languages",
+    "Maintained by the ICH MedDRA Management Committee"
+  ],
+  "relatedGuidelines": ["E2A", "E2B", "M1(R1)"]
+}
