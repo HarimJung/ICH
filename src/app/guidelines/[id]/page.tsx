@@ -85,26 +85,26 @@ export default function GuidelineDetailPage({ params }: { params: { id: string }
         ]}
         title={guideline.title}
       >
-        <div className="flex flex-wrap items-center gap-3 mt-5">
-          <span className="font-mono text-lg text-white/80 font-semibold">{guideline.id}</span>
+        <div className="flex flex-wrap items-center gap-3 mt-4">
+          <span className="font-mono text-[15px] text-secondary font-semibold">{guideline.id}</span>
           <StepBadge step={guideline.step} />
           <CategoryBadge category={guideline.category} />
           {guideline.hasActiveConsultation && (
-            <span className="rounded-full bg-green-400/20 px-3 py-1 text-xs font-semibold text-green-300">Open Consultation</span>
+            <span className="rounded-full bg-green-50 border border-green-200 px-3 py-1 text-xs font-semibold text-green-800">Open Consultation</span>
           )}
         </div>
-        <div className="flex flex-wrap gap-6 mt-4 text-sm text-white/50">
-          <span>Version: <strong className="text-white/80">{guideline.currentVersion || "—"}</strong></span>
-          <span>Step {guideline.step} reached: <strong className="text-white/80">{guideline.dateReached}</strong></span>
-          <span>Last updated: <strong className="text-white/80">{guideline.lastUpdated}</strong></span>
+        <div className="flex flex-wrap gap-6 mt-3 text-[13px] text-textSecondary">
+          <span>Version: <strong className="text-textPrimary">{guideline.currentVersion || "—"}</strong></span>
+          <span>Step {guideline.step} reached: <strong className="text-textPrimary">{guideline.dateReached}</strong></span>
+          <span>Last updated: <strong className="text-textPrimary">{guideline.lastUpdated}</strong></span>
         </div>
-        <div className="flex gap-3 mt-6">
-          <a href={guideline.pdfUrl} className="btn-primary text-sm">
+        <div className="flex gap-3 mt-5">
+          <a href={guideline.pdfUrl} className="inline-flex items-center gap-2 bg-primary text-white text-[13px] font-semibold px-5 py-2 hover:opacity-90 transition-opacity">
             <Download className="h-4 w-4" /> Download PDF
           </a>
           <button
             onClick={() => navigator.clipboard.writeText(window.location.href)}
-            className="btn-ghost text-sm"
+            className="inline-flex items-center gap-2 border border-border text-textPrimary text-[13px] font-medium px-5 py-2 hover:border-primary transition-colors"
           >
             <Share2 className="h-4 w-4" /> Share
           </button>
@@ -161,7 +161,7 @@ export default function GuidelineDetailPage({ params }: { params: { id: string }
                       <div className={`absolute -left-8 top-1 h-6 w-6 rounded-full border-2 flex items-center justify-center ${i === 0 ? "border-secondary bg-secondary/10" : "border-border bg-white"}`}>
                         <div className={`h-2 w-2 rounded-full ${i === 0 ? "bg-secondary" : "bg-border"}`} />
                       </div>
-                      <div className="card-static p-5 rounded-xl border border-border">
+                      <div className="bg-white border border-border p-5">
                         <div className="flex items-center gap-3 mb-2">
                           <span className="font-semibold text-textPrimary">{entry.version}</span>
                           <span className="text-sm text-textMuted">{entry.date}</span>
@@ -194,7 +194,7 @@ export default function GuidelineDetailPage({ params }: { params: { id: string }
                   {relatedTraining.length > 0 ? (
                     <div className="space-y-4">
                       {relatedTraining.map((t) => (
-                        <div key={t.id} className="card-static flex items-center gap-4 p-5 rounded-xl border border-border">
+                        <div key={t.id} className="bg-white border border-border flex items-center gap-4 p-5">
                           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary/10">
                             <svg className="h-5 w-5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><polygon points="5 3 19 12 5 21 5 3" /></svg>
                           </div>
@@ -217,7 +217,7 @@ export default function GuidelineDetailPage({ params }: { params: { id: string }
 
               {activeTab === "Implementation" && (
                 <div>
-                  <div className="card-static rounded-xl overflow-hidden border border-border mb-4">
+                  <div className="bg-white border border-border overflow-hidden mb-4">
                     <table className="w-full text-sm">
                       <thead>
                         <tr className="border-b border-border bg-backgroundAlt">
@@ -255,7 +255,7 @@ export default function GuidelineDetailPage({ params }: { params: { id: string }
                   {linkedConsultations.length > 0 ? (
                     <div className="space-y-4">
                       {linkedConsultations.map((c) => (
-                        <div key={c.id} className="card-static p-6 rounded-xl border border-border">
+                        <div key={c.id} className="bg-white border border-border p-6">
                           <div className="flex items-center gap-3 mb-3">
                             <span className={`rounded-full px-3 py-1 text-xs font-semibold ${c.status === "open" ? "bg-green-50 text-green-800" : c.status === "upcoming" ? "bg-amber-50 text-amber-700" : "bg-gray-100 text-gray-600"}`}>
                               {c.status.charAt(0).toUpperCase() + c.status.slice(1)}
@@ -285,7 +285,7 @@ export default function GuidelineDetailPage({ params }: { params: { id: string }
             {/* Right Sidebar */}
             <div className="hidden lg:block w-[300px] shrink-0">
               <div className="sticky top-[88px] space-y-6">
-                <div className="card-static p-6 rounded-xl border border-border">
+                <div className="bg-white border border-border p-6">
                   <h3 className="mb-4 text-lg font-semibold">Quick Facts</h3>
                   <dl className="space-y-3 text-sm">
                     <div className="flex justify-between"><dt className="text-textMuted">Category</dt><dd><CategoryBadge category={guideline.category} /></dd></div>
@@ -299,7 +299,7 @@ export default function GuidelineDetailPage({ params }: { params: { id: string }
                 </div>
 
                 {relatedTraining.length > 0 && (
-                  <div className="card-static p-6 rounded-xl border border-border">
+                  <div className="bg-white border border-border p-6">
                     <h3 className="mb-4 text-lg font-semibold">Related Training</h3>
                     <ul className="space-y-3">
                       {relatedTraining.slice(0, 3).map((t) => (
@@ -316,7 +316,7 @@ export default function GuidelineDetailPage({ params }: { params: { id: string }
                 )}
 
                 {activeConsultation && (
-                  <div className="card-static p-6 rounded-xl border-2 border-accent/30">
+                  <div className="bg-white border-2 border-accent/30 p-6">
                     <div className="flex items-center gap-2 mb-3">
                       <span className="rounded-full bg-green-50 px-3 py-1 text-xs font-semibold text-green-800">Open</span>
                       <span className="text-xs font-medium text-accent flex items-center gap-1"><Clock className="h-3.5 w-3.5" />{daysUntil(activeConsultation.closeDate)} days left</span>

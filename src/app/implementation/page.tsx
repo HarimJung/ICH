@@ -111,7 +111,7 @@ export default function ImplementationPage() {
       <div className="bg-white">
         <div className="container-content py-10 lg:py-14">
           {/* Summary Stats */}
-          <div className="card-static rounded-xl p-6 mb-8">
+          <div className="bg-white border border-border p-6 mb-8">
             <div className="grid grid-cols-3 gap-6 text-center">
               <div>
                 <div className="text-3xl font-bold text-primary">
@@ -206,7 +206,7 @@ export default function ImplementationPage() {
           </p>
 
           {/* Table */}
-          <div className="card-static rounded-xl overflow-x-auto">
+          <div className="bg-white border border-border overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
                 <tr className="bg-backgroundAlt">

@@ -20,32 +20,32 @@ export default function ConsultationCard({
   consultation: Consultation;
 }) {
   return (
-    <div className="card p-6 group">
+    <div className="group bg-white border border-border hover:border-primary/30 p-5 transition-colors">
       <div className="flex items-center justify-between mb-3">
         <span
-          className={`rounded-full px-3 py-1 text-xs font-semibold ${statusStyles[consultation.status]}`}
+          className={`rounded-full px-2.5 py-0.5 text-[11px] font-semibold ${statusStyles[consultation.status]}`}
         >
           {statusLabels[consultation.status]}
         </span>
         <Link
           href={`/guidelines/${encodeURIComponent(consultation.guidelineId)}`}
-          className="font-mono text-sm text-secondary font-medium hover:underline"
+          className="font-mono text-[13px] text-secondary font-medium hover:underline"
         >
           {consultation.guidelineId}
         </Link>
       </div>
-      <h3 className="text-[17px] font-semibold text-textPrimary leading-snug mb-2 group-hover:text-primary transition-colors">
+      <h3 className="text-[15px] font-semibold text-textPrimary leading-snug mb-2 group-hover:text-primary transition-colors">
         {consultation.title}
       </h3>
-      <p className="text-sm text-textMuted leading-relaxed line-clamp-2 mb-4">
+      <p className="text-[13px] text-textSecondary leading-relaxed line-clamp-2 mb-4">
         {consultation.description}
       </p>
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4 text-xs text-textMuted">
+        <div className="flex items-center gap-4 text-[12px] text-textSecondary">
           <span>Opens: {consultation.openDate}</span>
           <span>Closes: {consultation.closeDate}</span>
         </div>
-        <ArrowRight className="h-4 w-4 text-textMuted group-hover:text-secondary transition-colors" />
+        <ArrowRight className="h-3.5 w-3.5 text-textSecondary group-hover:text-primary transition-colors" />
       </div>
     </div>
   );

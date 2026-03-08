@@ -117,7 +117,7 @@ export default function UpdatesPage() {
                     return (
                       <div key={u.id} className="relative mb-6 last:mb-0">
                         <div className={`absolute -left-8 top-2 h-3 w-3 rounded-full ${config.dotColor} ring-2 ring-white`} />
-                        <div className="card p-5">
+                        <div className="bg-white border border-border p-5">
                           <div className="flex items-center gap-2 mb-2">
                             <span className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold ${config.color}`}>
                               {config.label}

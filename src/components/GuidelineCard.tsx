@@ -12,28 +12,26 @@ export default function GuidelineCard({
   return (
     <Link
       href={`/guidelines/${encodeURIComponent(guideline.id)}`}
-      className="card group block p-6 hover:no-underline"
+      className="group block bg-white border border-border hover:border-primary/30 p-5 transition-colors hover:no-underline"
     >
       <div className="flex items-start justify-between gap-3 mb-3">
-        <span className="font-mono text-sm text-secondary font-semibold bg-secondary/10 px-2.5 py-1 rounded-md">
+        <span className="font-mono text-[13px] text-secondary font-semibold">
           {guideline.id}
         </span>
-        <div className="flex gap-2 shrink-0">
-          <StepBadge step={guideline.step} />
-        </div>
+        <StepBadge step={guideline.step} />
       </div>
-      <h3 className="text-[17px] font-semibold text-textPrimary leading-snug mb-2 group-hover:text-primary transition-colors">
+      <h3 className="text-[15px] font-semibold text-textPrimary leading-snug mb-2 group-hover:text-primary transition-colors">
         {guideline.title}
       </h3>
-      <p className="text-sm text-textMuted leading-relaxed line-clamp-2 mb-4">
+      <p className="text-[13px] text-textSecondary leading-relaxed line-clamp-2 mb-4">
         {guideline.description}
       </p>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <CategoryBadge category={guideline.category} />
-          <span className="text-xs text-textMuted">{guideline.lastUpdated}</span>
+          <span className="text-[12px] text-textSecondary">{guideline.lastUpdated}</span>
         </div>
-        <ArrowRight className="h-4 w-4 text-textMuted group-hover:text-secondary transition-colors" />
+        <ArrowRight className="h-3.5 w-3.5 text-textSecondary group-hover:text-primary transition-colors" />
       </div>
     </Link>
   );

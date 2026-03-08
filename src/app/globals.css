@@ -40,16 +40,15 @@
     @apply font-mono text-sm text-secondary;
   }
 
-  /* IEA-style card */
+  /* IEA-style card — flat, minimal */
   .card {
-    @apply bg-white rounded-xl border border-border shadow-card
-           transition-all duration-300 ease-smooth
-           hover:shadow-cardHover hover:-translate-y-1;
+    @apply bg-white border border-border rounded-sm
+           transition-colors duration-200;
   }
 
   /* Card without hover effect */
   .card-static {
-    @apply bg-white rounded-xl border border-border shadow-card;
+    @apply bg-white border border-border rounded-sm;
   }
 
   /* Section spacing IEA-style */

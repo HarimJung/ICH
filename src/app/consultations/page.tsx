@@ -122,7 +122,7 @@ export default function ConsultationsPage() {
               return (
                 <div
                   key={c.id}
-                  className="card-static rounded-xl border border-border p-6"
+                  className="bg-white border border-border p-6"
                 >
                   {/* Header: Status badge + Category */}
                   <div className="flex items-center justify-between mb-4">
@@ -222,17 +222,17 @@ export default function ConsultationsPage() {
           )}
 
           {/* How to Submit Comments — Expandable */}
-          <div className="mt-14 card-static rounded-xl border border-border overflow-hidden">
+          <div className="mt-14 bg-white border border-border overflow-hidden">
             <button
               onClick={() => setExpandedGuidance(!expandedGuidance)}
               className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-backgroundAlt transition-colors"
             >
               <div className="flex items-center gap-3">
-                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-secondary/10">
-                  <MessageSquare className="h-5 w-5 text-secondary" />
+                <div className="flex items-center justify-center w-9 h-9 bg-backgroundAlt border border-border">
+                  <MessageSquare className="h-4 w-4 text-primary" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-textPrimary">
+                  <h3 className="text-[15px] font-semibold text-textPrimary">
                     How to Submit Comments
                   </h3>
                   <p className="text-sm text-textMuted mt-0.5">

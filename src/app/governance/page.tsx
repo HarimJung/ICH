@@ -36,18 +36,18 @@ export default function GovernancePage() {
   }, []);
 
   const renderMemberCard = (m: (typeof gov.members)[0]) => (
-    <div key={m.name} className="card p-5">
-      <div className="flex items-center gap-3 mb-2">
-        <span className="text-2xl">{m.flag}</span>
+    <div key={m.name} className="bg-backgroundAlt border border-border p-4">
+      <div className="flex items-center gap-2 mb-2">
+        <span className="text-lg">{m.flag}</span>
         <div>
-          <span className="font-semibold text-primary">{m.name}</span>
-          <span className={`ml-2 rounded-full px-2.5 py-0.5 text-xs font-medium ${m.type === "regulatory" ? "bg-blue-50 text-primary" : "bg-teal-50 text-secondary"}`}>
+          <span className="text-[14px] font-semibold text-primary">{m.name}</span>
+          <span className={`ml-2 rounded-full px-2 py-0.5 text-[11px] font-medium ${m.type === "regulatory" ? "bg-blue-50 text-primary" : "bg-teal-50 text-secondary"}`}>
             {m.type === "regulatory" ? "Regulatory" : "Industry"}
           </span>
         </div>
       </div>
-      <div className="text-sm text-textMuted mb-1">{m.fullName}</div>
-      <div className="text-xs text-textMuted">{m.region} · Since {m.since}</div>
+      <div className="text-[13px] text-textSecondary mb-1">{m.fullName}</div>
+      <div className="text-[12px] text-textSecondary">{m.region} · Since {m.since}</div>
     </div>
   );
 
@@ -105,13 +105,13 @@ export default function GovernancePage() {
                 <h2 className="text-h3 mb-4">Observers</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
                   {gov.observers.map((o) => (
-                    <div key={o.name} className="card p-5">
-                      <div className="flex items-center gap-3 mb-2">
-                        <span className="text-2xl">{o.flag}</span>
-                        <span className="font-semibold text-primary">{o.name}</span>
+                    <div key={o.name} className="bg-backgroundAlt border border-border p-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-lg">{o.flag}</span>
+                        <span className="text-[14px] font-semibold text-primary">{o.name}</span>
                       </div>
-                      <div className="text-sm text-textMuted mb-1">{o.fullName}</div>
-                      <div className="text-xs text-textMuted">{o.region}</div>
+                      <div className="text-[13px] text-textSecondary mb-1">{o.fullName}</div>
+                      <div className="text-[12px] text-textSecondary">{o.region}</div>
                     </div>
                   ))}
                 </div>
@@ -127,19 +127,19 @@ export default function GovernancePage() {
                   <h2 className="text-h3 mb-4">Upcoming</h2>
                   <div className="space-y-4">
                     {upcomingAssemblies.map((a) => (
-                      <div key={a.id} className="card p-6 flex items-center gap-5">
+                      <div key={a.id} className="bg-white border border-border p-5 flex items-center gap-4">
                         <div className="shrink-0 text-center">
-                          <div className="rounded-xl hero-gradient px-4 py-3">
-                            <div className="text-xl font-bold text-white">{new Date(a.date).getDate()}</div>
-                            <div className="text-xs text-white/70 uppercase">{new Date(a.date).toLocaleString("en", { month: "short", year: "numeric" })}</div>
+                          <div className="bg-primary px-4 py-3 w-16">
+                            <div className="text-[18px] font-bold text-white">{new Date(a.date).getDate()}</div>
+                            <div className="text-[11px] text-white/70 uppercase">{new Date(a.date).toLocaleString("en", { month: "short", year: "numeric" })}</div>
                           </div>
                         </div>
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-1">
-                            <h3 className="text-lg font-semibold">{a.title}</h3>
-                            <span className="rounded-full bg-green-50 text-green-800 px-3 py-1 text-xs font-semibold">Upcoming</span>
+                            <span className="text-[15px] font-semibold text-textPrimary">{a.title}</span>
+                            <span className="rounded-full bg-green-50 text-green-800 px-2.5 py-0.5 text-[11px] font-semibold">Upcoming</span>
                           </div>
-                          <div className="flex items-center gap-1 text-sm text-textMuted"><MapPin className="h-4 w-4 shrink-0" />{a.location}</div>
+                          <div className="flex items-center gap-1 text-[13px] text-textSecondary"><MapPin className="h-3.5 w-3.5 shrink-0" />{a.location}</div>
                         </div>
                       </div>
                     ))}
@@ -152,22 +152,22 @@ export default function GovernancePage() {
                   <h2 className="text-h3 mb-4">Past</h2>
                   <div className="space-y-4">
                     {pastAssemblies.map((a) => (
-                      <div key={a.id} className="card p-6 flex items-center gap-5">
+                      <div key={a.id} className="bg-backgroundAlt border border-border p-5 flex items-center gap-4">
                         <div className="shrink-0 text-center">
-                          <div className="rounded-xl bg-backgroundAlt px-4 py-3">
-                            <div className="text-xl font-bold text-textMuted">{new Date(a.date).getDate()}</div>
-                            <div className="text-xs text-textMuted uppercase">{new Date(a.date).toLocaleString("en", { month: "short", year: "numeric" })}</div>
+                          <div className="bg-white border border-border px-4 py-3 w-16">
+                            <div className="text-[18px] font-bold text-textSecondary">{new Date(a.date).getDate()}</div>
+                            <div className="text-[11px] text-textSecondary uppercase">{new Date(a.date).toLocaleString("en", { month: "short", year: "numeric" })}</div>
                           </div>
                         </div>
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-1">
-                            <h3 className="text-lg font-semibold">{a.title}</h3>
-                            <span className="rounded-full bg-gray-100 text-gray-600 px-3 py-1 text-xs font-semibold">Past</span>
+                            <span className="text-[15px] font-semibold text-textPrimary">{a.title}</span>
+                            <span className="rounded-full bg-gray-100 text-gray-600 px-2.5 py-0.5 text-[11px] font-semibold">Past</span>
                           </div>
-                          <div className="flex items-center gap-1 text-sm text-textMuted"><MapPin className="h-4 w-4 shrink-0" />{a.location}</div>
+                          <div className="flex items-center gap-1 text-[13px] text-textSecondary"><MapPin className="h-3.5 w-3.5 shrink-0" />{a.location}</div>
                         </div>
-                        <span className="shrink-0 flex items-center gap-1 text-sm font-medium text-secondary">
-                          Materials <ArrowRight className="h-4 w-4" />
+                        <span className="shrink-0 flex items-center gap-1 text-[13px] font-medium text-secondary">
+                          Materials <ArrowRight className="h-3.5 w-3.5" />
                         </span>
                       </div>
                     ))}
@@ -209,18 +209,18 @@ export default function GovernancePage() {
                 ))}
               </div>
 
-              <div className="space-y-4">
+              <div className="border border-border">
                 {stepData.map((step) => (
-                  <div key={step.label} className="card p-6 flex items-start gap-5">
-                    <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 ${step.color} bg-white`}>
-                      <span className="text-sm font-bold">{step.num}</span>
+                  <div key={step.label} className="bg-white border-b border-border last:border-b-0 p-5 flex items-start gap-4">
+                    <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border ${step.color} bg-white`}>
+                      <span className="text-[13px] font-bold">{step.num}</span>
                     </div>
                     <div>
                       <div className="flex items-center gap-3 mb-1">
-                        <h3 className="text-lg font-semibold">{step.title}</h3>
-                        <span className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${step.color}`}>{step.label}</span>
+                        <span className="text-[15px] font-semibold text-textPrimary">{step.title}</span>
+                        <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-semibold ${step.color}`}>{step.label}</span>
                       </div>
-                      <p className="text-sm text-textMuted leading-relaxed">{step.description}</p>
+                      <p className="text-[13px] text-textSecondary leading-relaxed">{step.description}</p>
                     </div>
                   </div>
                 ))}

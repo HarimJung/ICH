@@ -23,29 +23,23 @@ export default function HeroSection({
   size = "default",
 }: HeroSectionProps) {
   return (
-    <section className="hero-gradient relative overflow-hidden">
-      {/* Subtle radial glow */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-secondary/[0.08] blur-[120px] pointer-events-none" />
-
+    <section className="bg-white border-b border-border">
       <div
-        className={`container-content relative z-10 ${
-          size === "large" ? "pt-24 pb-20 lg:pt-32 lg:pb-24" : "pt-16 pb-14 lg:pt-20 lg:pb-16"
+        className={`container-content ${
+          size === "large" ? "pt-12 pb-10 lg:pt-14 lg:pb-12" : "pt-8 pb-8 lg:pt-10 lg:pb-10"
         }`}
       >
         {breadcrumbs && breadcrumbs.length > 0 && (
-          <nav className="mb-6 flex items-center gap-2 text-sm text-white/50">
+          <nav className="mb-4 flex items-center gap-1.5 text-[13px] text-textSecondary">
             {breadcrumbs.map((crumb, i) => (
-              <span key={i} className="flex items-center gap-2">
-                {i > 0 && <span>/</span>}
+              <span key={i} className="flex items-center gap-1.5">
+                {i > 0 && <span className="opacity-40">/</span>}
                 {crumb.href ? (
-                  <Link
-                    href={crumb.href}
-                    className="hover:text-white/80 transition-colors"
-                  >
+                  <Link href={crumb.href} className="hover:text-primary transition-colors">
                     {crumb.label}
                   </Link>
                 ) : (
-                  <span className="text-white/70">{crumb.label}</span>
+                  <span className="text-textPrimary font-medium">{crumb.label}</span>
                 )}
               </span>
             ))}
@@ -53,23 +47,23 @@ export default function HeroSection({
         )}
 
         {overline && (
-          <p className="text-overline uppercase tracking-[0.08em] text-secondary/80 mb-4 font-semibold">
+          <p className="text-[12px] uppercase tracking-[0.08em] text-textSecondary font-semibold mb-3">
             {overline}
           </p>
         )}
 
         <h1
-          className={`text-white font-bold leading-[1.15] max-w-3xl ${
+          className={`text-textPrimary font-bold leading-[1.15] max-w-3xl ${
             size === "large"
-              ? "text-[36px] md:text-hero tracking-[-0.03em]"
-              : "text-[32px] md:text-h1 tracking-[-0.02em]"
+              ? "text-[32px] md:text-[40px] tracking-[-0.02em]"
+              : "text-[26px] md:text-[32px] tracking-[-0.02em]"
           }`}
         >
           {title}
         </h1>
 
         {subtitle && (
-          <p className="mt-4 text-lg text-white/70 max-w-2xl leading-relaxed">
+          <p className="mt-3 text-[16px] text-textSecondary max-w-2xl leading-relaxed">
             {subtitle}
           </p>
         )}

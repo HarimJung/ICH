@@ -23,7 +23,7 @@ export default function MedDRAPage() {
       <section className="bg-white">
         <div className="container-content py-10 lg:py-14">
           {/* Description + Version */}
-          <div className="card-static rounded-xl p-6 md:p-8 mb-12 border-l-4 border-l-secondary">
+          <div className="bg-backgroundAlt border border-border border-l-4 border-l-secondary p-6 md:p-8 mb-12">
             <p className="text-textPrimary leading-relaxed text-base mb-6">
               {meddra.description}
             </p>
@@ -55,9 +55,9 @@ export default function MedDRAPage() {
             <h2 className="text-h3 mb-6">Key Facts</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {meddra.keyFacts.map((fact) => (
-                <div key={fact} className="card p-5 flex items-start gap-4">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-success/10">
-                    <CheckCircle2 className="h-5 w-5 text-success" />
+                <div key={fact} className="bg-white border border-border p-5 flex items-start gap-4">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center bg-green-50">
+                    <CheckCircle2 className="h-4 w-4 text-success" />
                   </div>
                   <span className="text-sm text-textPrimary leading-relaxed">
                     {fact}
@@ -69,18 +69,18 @@ export default function MedDRAPage() {
 
           {/* Learn More Card */}
           <div className="mb-12">
-            <div className="card-static rounded-xl p-8 bg-backgroundAlt">
+            <div className="bg-backgroundAlt border border-border p-8">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                 <div>
                   <div className="flex items-center gap-3 mb-2">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary/10">
-                      <Globe className="h-5 w-5 text-secondary" />
+                    <div className="flex h-9 w-9 items-center justify-center bg-[#E8F4FE]">
+                      <Globe className="h-4 w-4 text-primary" />
                     </div>
-                    <h3 className="text-xl font-semibold">
+                    <h3 className="text-[17px] font-semibold text-textPrimary">
                       Learn More at MedDRA.org
                     </h3>
                   </div>
-                  <p className="text-sm text-textMuted leading-relaxed max-w-xl ml-[52px]">
+                  <p className="text-[13px] text-textSecondary leading-relaxed max-w-xl ml-12">
                     MedDRA is maintained on a dedicated platform. Visit meddra.org
                     for full access, documentation and support.
                   </p>
@@ -89,7 +89,7 @@ export default function MedDRAPage() {
                   href={meddra.externalUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-primary shrink-0"
+                  className="inline-flex items-center gap-2 bg-primary text-white text-[13px] font-semibold px-5 py-2.5 shrink-0 hover:opacity-90 transition-opacity"
                 >
                   Visit meddra.org
                   <ArrowRight className="h-4 w-4" />
