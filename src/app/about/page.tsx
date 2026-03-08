@@ -37,8 +37,8 @@ export default function AboutPage() {
               { icon: Users, title: "Multi-Stakeholder", description: "ICH brings together regulatory authorities and industry associations from across the globe to create consensus-based technical guidelines." },
               { icon: FileCheck, title: "Science-Based Standards", description: "Guidelines are developed through rigorous scientific assessment, ensuring safe, effective, and high-quality medicines reach patients worldwide." },
             ].map((item) => (
-              <div key={item.title} className="bg-backgroundAlt p-6">
-                <div className="mb-4 w-10 h-10 flex items-center justify-center bg-[#E8F4FE]">
+              <div key={item.title} className="bg-white border border-border p-6 shadow-card">
+                <div className="mb-4 w-10 h-10 flex items-center justify-center bg-[#EEF3FB]">
                   <item.icon className="h-5 w-5 text-primary" />
                 </div>
                 <h3 className="text-[15px] font-semibold text-textPrimary mb-2">{item.title}</h3>
@@ -80,7 +80,7 @@ export default function AboutPage() {
           <h2 className="text-[22px] font-bold text-textPrimary mb-8">Members</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {gov.members.map((m) => (
-              <div key={m.name} className="bg-backgroundAlt border border-border p-4">
+              <div key={m.name} className="bg-white border border-border p-4 shadow-card">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-lg">{m.flag}</span>
                   <span className="text-[14px] font-semibold text-primary">{m.name}</span>
@@ -88,7 +88,7 @@ export default function AboutPage() {
                 <div className="text-[13px] text-textSecondary mb-1">{m.fullName}</div>
                 <div className="flex items-center justify-between text-[12px] text-textSecondary">
                   <span>{m.region}</span>
-                  <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${m.type === "regulatory" ? "bg-blue-50 text-primary" : "bg-teal-50 text-secondary"}`}>
+                  <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${m.type === "regulatory" ? "bg-blue-50 text-primary" : "bg-blue-50 text-secondary"}`}>
                     {m.type === "regulatory" ? "Regulatory" : "Industry"}
                   </span>
                 </div>
@@ -106,7 +106,7 @@ export default function AboutPage() {
           <h2 className="text-[22px] font-bold text-textPrimary mb-8">Observer Organisations</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {gov.observers.map((o) => (
-              <div key={o.name} className="bg-white border border-border p-4">
+              <div key={o.name} className="bg-white border border-border p-4 shadow-card">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-lg">{o.flag}</span>
                   <span className="text-[14px] font-semibold text-primary">{o.name}</span>

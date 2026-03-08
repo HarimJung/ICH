@@ -16,7 +16,7 @@ const typeConfig: Record<UpdateType, { icon: React.ComponentType<{ className?: s
   consultation: { icon: MessageSquare, label: "Consultations", color: "bg-green-50 text-green-800", dotColor: "bg-green-500" },
   training: { icon: GraduationCap, label: "Training", color: "bg-purple-50 text-purple-700", dotColor: "bg-purple-500" },
   revision: { icon: FileEdit, label: "Guidelines", color: "bg-amber-50 text-amber-700", dotColor: "bg-amber-500" },
-  news: { icon: Newspaper, label: "News", color: "bg-teal-50 text-teal-700", dotColor: "bg-teal-500" },
+  news: { icon: Newspaper, label: "News", color: "bg-blue-50 text-blue-700", dotColor: "bg-blue-500" },
   event: { icon: Calendar, label: "Events", color: "bg-red-50 text-red-700", dotColor: "bg-red-500" },
 };
 

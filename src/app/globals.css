@@ -40,15 +40,19 @@
     @apply font-mono text-sm text-secondary;
   }
 
-  /* IEA-style card — flat, minimal */
+  /* Card — subtle shadow, refined */
   .card {
-    @apply bg-white border border-border rounded-sm
-           transition-colors duration-200;
+    @apply bg-white border border-border rounded-sm shadow-card
+           transition-shadow duration-200;
+  }
+
+  .card:hover {
+    @apply shadow-cardHover;
   }
 
   /* Card without hover effect */
   .card-static {
-    @apply bg-white border border-border rounded-sm;
+    @apply bg-white border border-border rounded-sm shadow-card;
   }
 
   /* Section spacing IEA-style */

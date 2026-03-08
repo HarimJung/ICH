@@ -12,7 +12,7 @@ export default function GuidelineCard({
   return (
     <Link
       href={`/guidelines/${encodeURIComponent(guideline.id)}`}
-      className="group block bg-white border border-border hover:border-primary/30 p-5 transition-colors hover:no-underline"
+      className="group block bg-white border border-border shadow-card hover:shadow-cardHover p-5 transition-shadow duration-200 hover:no-underline"
     >
       <div className="flex items-start justify-between gap-3 mb-3">
         <span className="font-mono text-[13px] text-secondary font-semibold">

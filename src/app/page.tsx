@@ -72,25 +72,22 @@ export default function HomePage() {
             {/* Main feature — left 2 cols */}
             <div className="lg:col-span-2">
               <Link href="/updates" className="group block">
-                {/* Placeholder image */}
-                <div className="w-full aspect-[16/9] bg-gradient-to-br from-[#003B5C] to-[#00838F] rounded-sm mb-4 flex items-end overflow-hidden relative">
-                  <div className="p-5 relative z-10">
-                    <span className="text-[11px] font-semibold text-white/70 uppercase tracking-wider">
+                <div className="w-full aspect-[16/9] bg-[#003087] rounded-sm mb-4 overflow-hidden relative">
+                  <div className="absolute inset-0 flex flex-col justify-between p-6">
+                    <span className="self-start inline-block bg-white/15 text-white text-[11px] font-semibold px-3 py-1 rounded-sm uppercase tracking-wider">
                       Step change
                     </span>
+                    <div>
+                      <p className="text-white/60 text-[13px] mb-1">{latestUpdates[0]?.date}</p>
+                      <h2 className="text-white text-[20px] font-bold leading-snug max-w-lg">
+                        {latestUpdates[0]?.title}
+                      </h2>
+                    </div>
                   </div>
                 </div>
-                <div>
-                  <p className="text-[13px] text-textSecondary mb-2">
-                    {latestUpdates[0]?.date}
-                  </p>
-                  <h2 className="text-[22px] font-bold text-textPrimary leading-[1.25] group-hover:text-primary transition-colors mb-3">
-                    {latestUpdates[0]?.title}
-                  </h2>
-                  <p className="text-[15px] text-textSecondary leading-relaxed">
-                    {latestUpdates[0]?.description}
-                  </p>
-                </div>
+                <p className="text-[15px] text-textSecondary leading-relaxed mt-3">
+                  {latestUpdates[0]?.description}
+                </p>
               </Link>
             </div>
 
@@ -123,12 +120,10 @@ export default function HomePage() {
               const config = updateTypeConfig[u.type];
               return (
                 <Link key={u.id} href="/updates" className="group block">
-                  <div className="w-full aspect-[4/3] bg-backgroundAlt rounded-sm mb-3 overflow-hidden">
-                    <div className="w-full h-full bg-gradient-to-br from-border to-backgroundAlt flex items-center justify-center">
-                      <span className={`text-[11px] font-semibold px-2 py-1 rounded-full ${config.color}`}>
-                        {config.label}
-                      </span>
-                    </div>
+                  <div className="w-full aspect-[4/3] bg-[#F4F7FA] border border-border rounded-sm mb-3 overflow-hidden flex items-end p-3">
+                    <span className={`text-[11px] font-semibold px-2 py-0.5 rounded-sm ${config.color}`}>
+                      {config.label}
+                    </span>
                   </div>
                   <p className="text-[12px] text-textSecondary mb-1">{u.date}</p>
                   <h4 className="text-[14px] font-semibold text-textPrimary leading-snug group-hover:text-primary transition-colors line-clamp-2">
@@ -179,7 +174,7 @@ export default function HomePage() {
                 key={i}
                 className="bg-white p-8 flex flex-col border-r border-border last:border-r-0 md:border-b-0 border-b"
               >
-                <div className="mb-4 w-10 h-10 flex items-center justify-center rounded-sm bg-[#E8F4FE]">
+                <div className="mb-4 w-10 h-10 flex items-center justify-center rounded-sm bg-[#EEF3FB]">
                   <item.icon className="h-5 w-5 text-primary" />
                 </div>
                 <p className="text-[17px] font-medium text-textPrimary leading-snug mb-2">
@@ -237,9 +232,9 @@ export default function HomePage() {
             ].map((item) => (
               <div
                 key={item.title}
-                className="bg-[#F2F3F5] rounded-sm p-6 flex flex-col"
+                className="bg-white border border-border rounded-sm p-6 flex flex-col shadow-card hover:shadow-cardHover transition-shadow duration-200"
               >
-                <div className="mb-4 w-10 h-10 flex items-center justify-center rounded-sm bg-[#E8F4FE]">
+                <div className="mb-4 w-10 h-10 flex items-center justify-center rounded-sm bg-[#EEF3FB]">
                   <item.icon className="h-5 w-5 text-primary" />
                 </div>
                 <h3 className="text-[15px] font-semibold text-textPrimary mb-2">

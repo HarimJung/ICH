@@ -9,17 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#003B5C',
-        secondary: '#00838F',
+        primary: '#003087',
+        secondary: '#1A62B1',
         accent: '#D4A843',
-        dark: '#001B2E',
+        dark: '#001832',
         background: '#FFFFFF',
-        backgroundAlt: '#F4F6F8',
+        backgroundAlt: '#F4F7FA',
         surface: '#FFFFFF',
         textPrimary: '#1A1A2E',
         textSecondary: '#374151',
         textMuted: '#5A6275',
-        border: '#E8ECF0',
+        border: '#E2E8F0',
         success: '#198754',
         warning: '#E6930A',
         error: '#DC3545',
@@ -41,8 +41,8 @@ const config: Config = {
         prose: '720px',
       },
       boxShadow: {
-        card: '0 2px 8px rgba(0,0,0,0.06)',
-        cardHover: '0 8px 24px rgba(0,0,0,0.12)',
+        card: '0 1px 4px rgba(0,0,0,0.07), 0 4px 12px rgba(0,0,0,0.06)',
+        cardHover: '0 4px 16px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.08)',
         nav: '0 1px 3px rgba(0,0,0,0.08)',
         search: '0 4px 24px rgba(0,0,0,0.12)',
         elevated: '0 20px 40px rgba(0,0,0,0.15)',

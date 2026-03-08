@@ -36,12 +36,12 @@ export default function GovernancePage() {
   }, []);
 
   const renderMemberCard = (m: (typeof gov.members)[0]) => (
-    <div key={m.name} className="bg-backgroundAlt border border-border p-4">
+    <div key={m.name} className="bg-white border border-border p-4 shadow-card">
       <div className="flex items-center gap-2 mb-2">
         <span className="text-lg">{m.flag}</span>
         <div>
           <span className="text-[14px] font-semibold text-primary">{m.name}</span>
-          <span className={`ml-2 rounded-full px-2 py-0.5 text-[11px] font-medium ${m.type === "regulatory" ? "bg-blue-50 text-primary" : "bg-teal-50 text-secondary"}`}>
+          <span className={`ml-2 rounded-full px-2 py-0.5 text-[11px] font-medium ${m.type === "regulatory" ? "bg-blue-50 text-primary" : "bg-blue-50 text-secondary"}`}>
             {m.type === "regulatory" ? "Regulatory" : "Industry"}
           </span>
         </div>
@@ -105,7 +105,7 @@ export default function GovernancePage() {
                 <h2 className="text-h3 mb-4">Observers</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
                   {gov.observers.map((o) => (
-                    <div key={o.name} className="bg-backgroundAlt border border-border p-4">
+                    <div key={o.name} className="bg-white border border-border p-4 shadow-card">
                       <div className="flex items-center gap-2 mb-2">
                         <span className="text-lg">{o.flag}</span>
                         <span className="text-[14px] font-semibold text-primary">{o.name}</span>

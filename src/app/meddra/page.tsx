@@ -23,7 +23,7 @@ export default function MedDRAPage() {
       <section className="bg-white">
         <div className="container-content py-10 lg:py-14">
           {/* Description + Version */}
-          <div className="bg-backgroundAlt border border-border border-l-4 border-l-secondary p-6 md:p-8 mb-12">
+          <div className="bg-backgroundAlt border border-border p-6 md:p-8 mb-12 shadow-card">
             <p className="text-textPrimary leading-relaxed text-base mb-6">
               {meddra.description}
             </p>
@@ -73,7 +73,7 @@ export default function MedDRAPage() {
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                 <div>
                   <div className="flex items-center gap-3 mb-2">
-                    <div className="flex h-9 w-9 items-center justify-center bg-[#E8F4FE]">
+                    <div className="flex h-9 w-9 items-center justify-center bg-[#EEF3FB]">
                       <Globe className="h-4 w-4 text-primary" />
                     </div>
                     <h3 className="text-[17px] font-semibold text-textPrimary">

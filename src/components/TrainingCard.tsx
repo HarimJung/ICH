@@ -5,7 +5,7 @@ import CategoryBadge from "./CategoryBadge";
 
 export default function TrainingCard({ training }: { training: Training }) {
   return (
-    <div className="group bg-white border border-border hover:border-primary/30 overflow-hidden transition-colors">
+    <div className="group bg-white border border-border shadow-card hover:shadow-cardHover overflow-hidden transition-shadow duration-200">
       {/* Thumbnail — IEA flat style */}
       <div className="relative h-28 bg-backgroundAlt flex items-center justify-center border-b border-border">
         <FileText className="h-8 w-8 text-primary/30" />
