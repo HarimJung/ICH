@@ -2,45 +2,53 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
-import { ChevronDown, Download, FileText } from "lucide-react";
+import {
+  ChevronDown,
+  Download,
+  FileText,
+  Clock,
+  Calendar,
+  MessageSquare,
+  ArrowRight,
+} from "lucide-react";
+import HeroSection from "@/components/HeroSection";
 import consultations from "@/data/consultations.json";
 import { Consultation, ConsultationStatus } from "@/types";
 
 const typedConsultations = consultations as Consultation[];
 
+type TabKey = "all" | ConsultationStatus;
+
 const statusStyles: Record<ConsultationStatus, string> = {
   open: "bg-green-50 text-green-800",
+  upcoming: "bg-amber-50 text-amber-700",
   closed: "bg-gray-100 text-gray-600",
-  upcoming: "bg-amber-50 text-amber-800",
 };
-
-function getDeadlineProgress(openDate: string, closeDate: string): number {
-  const open = new Date(openDate).getTime();
-  const close = new Date(closeDate).getTime();
-  const now = Date.now();
-  if (now <= open) return 0;
-  if (now >= close) return 100;
-  return Math.round(((now - open) / (close - open)) * 100);
-}
-
-function getProgressColor(pct: number): string {
-  if (pct < 50) return "bg-green-500";
-  if (pct < 80) return "bg-amber-500";
-  return "bg-red-500";
-}
 
 function daysUntil(dateStr: string): number {
   const target = new Date(dateStr);
   const now = new Date();
-  return Math.max(0, Math.ceil((target.getTime() - now.getTime()) / 86400000));
+  return Math.max(
+    0,
+    Math.ceil((target.getTime() - now.getTime()) / 86400000)
+  );
+}
+
+function formatDate(dateStr: string): string {
+  return new Date(dateStr).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
 }
 
 export default function ConsultationsPage() {
-  const [activeStatus, setActiveStatus] = useState<ConsultationStatus>("open");
+  const [activeTab, setActiveTab] = useState<TabKey>("all");
   const [expandedGuidance, setExpandedGuidance] = useState(false);
 
   const counts = useMemo(() => {
     return {
+      all: typedConsultations.length,
       open: typedConsultations.filter((c) => c.status === "open").length,
       upcoming: typedConsultations.filter((c) => c.status === "upcoming")
         .length,
@@ -49,212 +57,248 @@ export default function ConsultationsPage() {
   }, []);
 
   const filtered = useMemo(
-    () => typedConsultations.filter((c) => c.status === activeStatus),
-    [activeStatus]
+    () =>
+      activeTab === "all"
+        ? typedConsultations
+        : typedConsultations.filter((c) => c.status === activeTab),
+    [activeTab]
   );
 
-  const tabs: { status: ConsultationStatus; label: string; count: number }[] = [
-    { status: "open", label: "Open", count: counts.open },
-    { status: "upcoming", label: "Upcoming", count: counts.upcoming },
-    { status: "closed", label: "Closed", count: counts.closed },
+  const tabs: { key: TabKey; label: string; count: number }[] = [
+    { key: "all", label: "All", count: counts.all },
+    { key: "open", label: "Open", count: counts.open },
+    { key: "upcoming", label: "Upcoming", count: counts.upcoming },
+    { key: "closed", label: "Closed", count: counts.closed },
   ];
 
   return (
-    <div className="container-content section-gap">
-      {/* Breadcrumb */}
-      <nav className="mb-6 text-sm text-textSecondary">
-        <Link href="/" className="hover:text-secondary">
-          Home
-        </Link>
-        <span className="mx-2">&gt;</span>
-        <span className="text-textPrimary font-medium">Consultations</span>
-      </nav>
+    <div>
+      {/* Hero */}
+      <HeroSection
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Consultations" },
+        ]}
+        title="Public Consultations"
+        subtitle="ICH invites stakeholders to review and comment on draft guidelines. Your input helps shape global pharmaceutical standards."
+      />
 
-      <div className="mb-8">
-        <h1 className="mb-2">Public Consultations</h1>
-        <p className="text-textSecondary max-w-3xl">
-          ICH invites stakeholders to review and comment on draft guidelines.
-          Your input helps shape global pharmaceutical standards.
-        </p>
-      </div>
-
-      {/* Status Tabs */}
-      <div className="border-b border-border mb-8">
-        <div className="flex gap-0">
-          {tabs.map((tab) => (
-            <button
-              key={tab.status}
-              onClick={() => setActiveStatus(tab.status)}
-              className={`px-5 py-3 text-sm font-medium border-b-[3px] transition-colors ${
-                activeStatus === tab.status
-                  ? "border-secondary text-textPrimary font-semibold"
-                  : "border-transparent text-textSecondary hover:text-textPrimary"
-              }`}
-            >
-              {tab.label}{" "}
-              <span
-                className={`ml-1 rounded-full px-2 py-0.5 text-xs font-semibold ${
-                  activeStatus === tab.status
-                    ? statusStyles[tab.status]
-                    : "bg-gray-100 text-gray-500"
-                }`}
-              >
-                {tab.count}
-              </span>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Cards */}
-      <div className="space-y-6">
-        {filtered.map((c) => {
-          const progress = getDeadlineProgress(c.openDate, c.closeDate);
-          const progressColor = getProgressColor(progress);
-
-          return (
-            <div key={c.id} className="card p-6">
-              <div className="flex items-start justify-between gap-4 mb-4">
-                <div className="flex items-center gap-3">
+      {/* Content */}
+      <section className="bg-white">
+        <div className="container-content py-10 lg:py-14">
+          {/* Tabs */}
+          <div className="border-b border-border mb-10">
+            <div className="flex gap-0">
+              {tabs.map((tab) => (
+                <button
+                  key={tab.key}
+                  onClick={() => setActiveTab(tab.key)}
+                  className={`px-5 py-3 text-[15px] font-medium border-b-[3px] transition-colors ${
+                    activeTab === tab.key
+                      ? "border-secondary text-textPrimary font-semibold"
+                      : "border-transparent text-textMuted hover:text-textPrimary"
+                  }`}
+                >
+                  {tab.label}
                   <span
-                    className={`rounded-full px-3 py-1 text-xs font-semibold ${statusStyles[c.status]}`}
+                    className={`ml-2 inline-flex items-center justify-center rounded-full px-2 py-0.5 text-xs font-semibold ${
+                      activeTab === tab.key
+                        ? "bg-secondary/10 text-secondary"
+                        : "bg-gray-100 text-gray-500"
+                    }`}
                   >
-                    {c.status.charAt(0).toUpperCase() + c.status.slice(1)}
+                    {tab.count}
                   </span>
-                  <Link
-                    href={`/guidelines/${encodeURIComponent(c.guidelineId)}`}
-                    className="font-mono text-sm text-secondary font-medium rounded bg-secondary/10 px-2 py-0.5 hover:underline"
-                  >
-                    {c.guidelineId}
-                  </Link>
-                </div>
-                {c.status === "open" && (
-                  <span className="text-sm font-medium text-textSecondary">
-                    {daysUntil(c.closeDate)} days remaining
-                  </span>
-                )}
-              </div>
-
-              <h3 className="text-xl font-semibold text-textPrimary mb-2">
-                {c.title}
-              </h3>
-
-              <div className="flex items-center gap-6 text-sm text-textSecondary mb-3">
-                <span>Open: {c.openDate}</span>
-                <span>Close: {c.closeDate}</span>
-              </div>
-
-              {/* Deadline progress bar */}
-              {c.status === "open" && (
-                <div className="mb-4">
-                  <div className="h-1.5 w-full rounded-full bg-gray-100 overflow-hidden">
-                    <div
-                      className={`h-full rounded-full transition-all ${progressColor}`}
-                      style={{ width: `${progress}%` }}
-                    />
-                  </div>
-                  <div className="flex justify-between mt-1 text-xs text-textSecondary">
-                    <span>Opened</span>
-                    <span>{progress}% elapsed</span>
-                    <span>Closes</span>
-                  </div>
-                </div>
-              )}
-
-              <p className="text-sm text-textSecondary leading-relaxed mb-4">
-                {c.description}
-              </p>
-
-              {/* Action buttons */}
-              <div className="flex flex-wrap gap-3">
-                {c.status === "open" && (
-                  <>
-                    <button className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary/90">
-                      Submit Comment
-                    </button>
-                    <button className="inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-semibold text-textPrimary hover:border-secondary hover:text-secondary transition-colors">
-                      <FileText className="h-4 w-4" />
-                      View Draft Document
-                    </button>
-                  </>
-                )}
-                {c.status === "closed" && (
-                  <button className="inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-semibold text-textPrimary hover:border-secondary hover:text-secondary transition-colors">
-                    <FileText className="h-4 w-4" />
-                    View Document
-                  </button>
-                )}
-                {c.status === "upcoming" && (
-                  <span className="text-sm text-textSecondary italic">
-                    Consultation opens {c.openDate}
-                  </span>
-                )}
-              </div>
+                </button>
+              ))}
             </div>
-          );
-        })}
-      </div>
-
-      {filtered.length === 0 && (
-        <div className="py-16 text-center">
-          <p className="text-lg text-textSecondary">
-            No {activeStatus} consultations at this time.
-          </p>
-        </div>
-      )}
-
-      {/* Submission Guidance */}
-      <div className="mt-12 card overflow-hidden">
-        <button
-          onClick={() => setExpandedGuidance(!expandedGuidance)}
-          className="w-full flex items-center justify-between p-6 text-left"
-        >
-          <h3 className="text-lg font-semibold">How to Submit Comments</h3>
-          <ChevronDown
-            className={`h-5 w-5 text-textSecondary transition-transform ${
-              expandedGuidance ? "rotate-180" : ""
-            }`}
-          />
-        </button>
-        {expandedGuidance && (
-          <div className="px-6 pb-6 border-t border-border pt-4">
-            <div className="prose prose-sm text-textSecondary space-y-3">
-              <p>
-                ICH welcomes comments from all interested stakeholders including
-                regulatory authorities, pharmaceutical companies, academia, and
-                patient organizations.
-              </p>
-              <ol className="list-decimal list-inside space-y-2">
-                <li>
-                  Download the official Comment Form using the button below.
-                </li>
-                <li>
-                  Review the draft guideline document available on the
-                  consultation page.
-                </li>
-                <li>
-                  Complete the comment form with your feedback, referencing
-                  specific line numbers and sections.
-                </li>
-                <li>
-                  Submit your completed form by email to the address provided in
-                  the comment form before the consultation deadline.
-                </li>
-              </ol>
-              <p>
-                All comments received will be reviewed by the relevant ICH
-                Expert Working Group and considered during guideline
-                finalization. Commenters will not receive individual responses,
-                but a summary of comments may be published.
-              </p>
-            </div>
-            <button className="mt-4 inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-semibold text-textPrimary hover:border-secondary hover:text-secondary transition-colors">
-              <Download className="h-4 w-4" />
-              Download Comment Form
-            </button>
           </div>
-        )}
-      </div>
+
+          {/* Consultation Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {filtered.map((c) => {
+              const remaining = daysUntil(c.closeDate);
+
+              return (
+                <div
+                  key={c.id}
+                  className="card-static rounded-xl border border-border p-6"
+                >
+                  {/* Header: Status badge + Category */}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <span
+                        className={`rounded-full px-3 py-1 text-xs font-semibold capitalize ${statusStyles[c.status]}`}
+                      >
+                        {c.status}
+                      </span>
+                      <span className="text-xs font-medium text-textMuted uppercase tracking-wide">
+                        {c.category}
+                      </span>
+                    </div>
+                    <Link
+                      href={`/guidelines/${encodeURIComponent(c.guidelineId)}`}
+                      className="font-mono text-sm text-secondary font-medium hover:underline"
+                    >
+                      {c.guidelineId}
+                    </Link>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-lg font-semibold text-textPrimary mb-3 leading-snug">
+                    {c.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-sm text-textMuted leading-relaxed mb-4">
+                    {c.description}
+                  </p>
+
+                  {/* Dates */}
+                  <div className="flex flex-wrap items-center gap-4 text-sm text-textMuted mb-4">
+                    <span className="inline-flex items-center gap-1.5">
+                      <Calendar className="h-3.5 w-3.5" />
+                      Opens: {formatDate(c.openDate)}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5">
+                      <Calendar className="h-3.5 w-3.5" />
+                      Closes: {formatDate(c.closeDate)}
+                    </span>
+                  </div>
+
+                  {/* Countdown for open consultations */}
+                  {c.status === "open" && (
+                    <div className="flex items-center gap-2 rounded-lg bg-green-50 px-4 py-2.5 mb-4">
+                      <Clock className="h-4 w-4 text-green-700" />
+                      <span className="text-sm font-semibold text-green-800">
+                        {remaining} {remaining === 1 ? "day" : "days"} remaining
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Actions */}
+                  <div className="flex flex-wrap items-center gap-3 pt-2 border-t border-border">
+                    {c.status === "open" && (
+                      <>
+                        <button className="btn-primary text-sm px-4 py-2">
+                          <MessageSquare className="h-4 w-4" />
+                          Submit Comment
+                        </button>
+                        <button className="inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm font-medium text-textPrimary hover:border-secondary hover:text-secondary transition-colors">
+                          <FileText className="h-4 w-4" />
+                          View Draft
+                        </button>
+                      </>
+                    )}
+                    {c.status === "closed" && (
+                      <Link
+                        href={`/guidelines/${encodeURIComponent(c.guidelineId)}`}
+                        className="inline-flex items-center gap-2 text-sm font-medium text-secondary hover:underline"
+                      >
+                        View Final Document
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
+                    )}
+                    {c.status === "upcoming" && (
+                      <span className="inline-flex items-center gap-2 text-sm text-textMuted italic">
+                        <Clock className="h-4 w-4" />
+                        Opens {formatDate(c.openDate)}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Empty state */}
+          {filtered.length === 0 && (
+            <div className="py-16 text-center">
+              <p className="text-lg text-textMuted">
+                No {activeTab === "all" ? "" : activeTab} consultations at this
+                time.
+              </p>
+            </div>
+          )}
+
+          {/* How to Submit Comments — Expandable */}
+          <div className="mt-14 card-static rounded-xl border border-border overflow-hidden">
+            <button
+              onClick={() => setExpandedGuidance(!expandedGuidance)}
+              className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-backgroundAlt transition-colors"
+            >
+              <div className="flex items-center gap-3">
+                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-secondary/10">
+                  <MessageSquare className="h-5 w-5 text-secondary" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-textPrimary">
+                    How to Submit Comments
+                  </h3>
+                  <p className="text-sm text-textMuted mt-0.5">
+                    Step-by-step guidance for participating in public
+                    consultations
+                  </p>
+                </div>
+              </div>
+              <ChevronDown
+                className={`h-5 w-5 text-textMuted transition-transform duration-200 ${
+                  expandedGuidance ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            {expandedGuidance && (
+              <div className="px-6 pb-6 border-t border-border pt-5">
+                <div className="space-y-4 text-sm text-textMuted leading-relaxed">
+                  <p>
+                    ICH welcomes comments from all interested stakeholders
+                    including regulatory authorities, pharmaceutical companies,
+                    academia, and patient organizations.
+                  </p>
+                  <ol className="list-decimal list-inside space-y-3 ml-1">
+                    <li>
+                      <span className="font-medium text-textPrimary">
+                        Download the Comment Form
+                      </span>{" "}
+                      — Use the official template provided below.
+                    </li>
+                    <li>
+                      <span className="font-medium text-textPrimary">
+                        Review the Draft Guideline
+                      </span>{" "}
+                      — Access the document from the relevant consultation page.
+                    </li>
+                    <li>
+                      <span className="font-medium text-textPrimary">
+                        Complete Your Feedback
+                      </span>{" "}
+                      — Reference specific line numbers and sections in your
+                      comments.
+                    </li>
+                    <li>
+                      <span className="font-medium text-textPrimary">
+                        Submit Before the Deadline
+                      </span>{" "}
+                      — Email the completed form to the address provided before
+                      the consultation closes.
+                    </li>
+                  </ol>
+                  <p>
+                    All comments received will be reviewed by the relevant ICH
+                    Expert Working Group and considered during guideline
+                    finalization. Commenters will not receive individual
+                    responses, but a summary of comments may be published.
+                  </p>
+                </div>
+                <button className="mt-5 inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-semibold text-textPrimary hover:border-secondary hover:text-secondary transition-colors">
+                  <Download className="h-4 w-4" />
+                  Download Comment Form
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

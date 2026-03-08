@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Training } from "@/types";
 import { PlayCircle, BookOpen, FileText, Monitor, ArrowRight } from "lucide-react";
+import CategoryBadge from "./CategoryBadge";
 
 const typeIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   video: PlayCircle,
@@ -9,59 +10,50 @@ const typeIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   "e-learning": BookOpen,
 };
 
-const typeBadgeColors: Record<string, string> = {
-  video: "bg-blue-500",
-  webinar: "bg-purple-500",
-  document: "bg-red-500",
-  "e-learning": "bg-green-500",
-};
-
 const thumbnailGradients: Record<string, string> = {
-  video: "from-primary to-secondary",
-  webinar: "from-purple-600 to-secondary",
-  document: "from-red-600 to-primary",
-  "e-learning": "from-green-600 to-primary",
+  video: "from-primary to-[#004D73]",
+  webinar: "from-[#004D73] to-secondary",
+  document: "from-dark to-primary",
+  "e-learning": "from-secondary to-primary",
 };
 
 export default function TrainingCard({ training }: { training: Training }) {
   const Icon = typeIcons[training.type] || FileText;
-  const badgeColor = typeBadgeColors[training.type] || "bg-gray-500";
-  const gradient = thumbnailGradients[training.type] || "from-primary to-secondary";
+  const gradient = thumbnailGradients[training.type] || "from-primary to-[#004D73]";
 
   return (
     <div className="card overflow-hidden">
       {/* Thumbnail */}
       <div className={`relative h-36 bg-gradient-to-br ${gradient} flex items-center justify-center`}>
-        <Icon className="h-12 w-12 text-white/80" />
-        <span
-          className={`absolute top-3 left-3 rounded-md px-2 py-0.5 text-xs font-semibold text-white ${badgeColor}`}
-        >
+        <Icon className="h-12 w-12 text-white/60" />
+        <span className="absolute top-3 left-3 rounded-full bg-white/20 backdrop-blur-sm px-3 py-0.5 text-xs font-semibold text-white">
           {training.type}
         </span>
       </div>
       {/* Content */}
       <div className="p-5">
-        <h3 className="text-base font-semibold text-textPrimary leading-snug mb-2">
+        <h3 className="text-[16px] font-semibold text-textPrimary leading-snug mb-3">
           {training.title}
         </h3>
-        <div className="mb-3">
+        <div className="flex items-center gap-2 mb-3">
+          <CategoryBadge category={training.category} />
           <Link
             href={`/guidelines/${encodeURIComponent(training.relatedGuideline)}`}
-            className="font-mono text-xs text-secondary font-medium rounded bg-secondary/10 px-1.5 py-0.5 hover:underline"
+            className="font-mono text-xs text-secondary font-medium hover:underline"
           >
             {training.relatedGuideline}
           </Link>
         </div>
-        <div className="flex items-center gap-3 text-xs text-textSecondary mb-4">
+        <div className="flex items-center gap-3 text-xs text-textMuted mb-4">
           <span>{training.duration}</span>
-          <span>·</span>
+          <span className="text-border">|</span>
           <span>{training.language}</span>
-          <span>·</span>
+          <span className="text-border">|</span>
           <span>{training.datePublished}</span>
         </div>
-        <button className="flex items-center gap-1.5 text-sm font-medium text-secondary hover:underline">
+        <span className="flex items-center gap-1.5 text-sm font-semibold text-secondary">
           View Module <ArrowRight className="h-3.5 w-3.5" />
-        </button>
+        </span>
       </div>
     </div>
   );

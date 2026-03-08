@@ -8,30 +8,27 @@ import {
   Building2,
   MessageSquare,
   GraduationCap,
-  Globe,
+  Search,
   Stethoscope,
-  MapPin,
-  Calendar,
   ArrowUpCircle,
   FileEdit,
   Newspaper,
-  Search,
+  Calendar,
 } from "lucide-react";
 import guidelines from "@/data/guidelines.json";
 import training from "@/data/training.json";
 import updates from "@/data/updates.json";
 import consultations from "@/data/consultations.json";
 import governance from "@/data/governance.json";
-import meddra from "@/data/meddra.json";
 import { Guideline, Training, Update, Consultation, GovernanceData } from "@/types";
+import StatsBar from "@/components/StatsBar";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const typedGuidelines = guidelines as Guideline[];
 const typedTraining = training as Training[];
 const typedUpdates = updates as Update[];
 const typedConsultations = consultations as Consultation[];
 const gov = governance as GovernanceData;
-
-const categories = ["Quality", "Safety", "Efficacy", "Multidisciplinary"] as const;
 
 const updateTypeConfig: Record<
   string,
@@ -47,6 +44,9 @@ const updateTypeConfig: Record<
 
 export default function HomePage() {
   const [search, setSearch] = useState("");
+  const journeyRef = useScrollAnimation<HTMLDivElement>();
+  const updatesRef = useScrollAnimation<HTMLDivElement>();
+  const quickRef = useScrollAnimation<HTMLDivElement>();
 
   const openConsultations = useMemo(
     () => typedConsultations.filter((c) => c.status === "open").length,
@@ -57,12 +57,7 @@ export default function HomePage() {
     () =>
       [...typedUpdates]
         .sort((a, b) => b.date.localeCompare(a.date))
-        .slice(0, 5),
-    []
-  );
-
-  const upcomingEvents = useMemo(
-    () => gov.assemblies.filter((a) => a.status === "upcoming"),
+        .slice(0, 6),
     []
   );
 
@@ -77,17 +72,17 @@ export default function HomePage() {
             g.title.toLowerCase().includes(q) ||
             g.tags.some((t) => t.toLowerCase().includes(q))
         )
-        .slice(0, 4),
+        .slice(0, 5),
       training: typedTraining
         .filter((t) => t.title.toLowerCase().includes(q))
-        .slice(0, 2),
+        .slice(0, 3),
       consultations: typedConsultations
         .filter(
           (c) =>
             c.title.toLowerCase().includes(q) ||
             c.guidelineId.toLowerCase().includes(q)
         )
-        .slice(0, 2),
+        .slice(0, 3),
     };
   }, [search]);
 
@@ -98,38 +93,43 @@ export default function HomePage() {
 
   return (
     <div>
-      {/* Hero */}
-      <section className="bg-primary text-white">
-        <div className="mx-auto max-w-content px-6 pt-24 pb-16 text-center">
-          <h1 className="text-3xl md:text-[40px] font-bold leading-tight text-white mb-4">
-            Harmonisation for better health
-          </h1>
-          <p className="text-lg text-white/80 mb-8 max-w-3xl mx-auto">
-            The global platform bringing together regulatory authorities and
-            pharmaceutical industry to ensure safe, effective and high-quality
-            medicines worldwide.
+      {/* ============ HERO ============ */}
+      <section className="hero-gradient relative overflow-hidden">
+        {/* Radial glow */}
+        <div className="absolute top-[-100px] right-[-100px] w-[700px] h-[700px] rounded-full bg-[rgba(0,131,143,0.15)] blur-[120px] pointer-events-none" />
+
+        <div className="container-content relative z-10 pt-20 pb-16 lg:pt-28 lg:pb-24 min-h-[520px] flex flex-col justify-center">
+          <p className="overline text-secondary/80 mb-5">
+            INTERNATIONAL COUNCIL FOR HARMONISATION
           </p>
-          <div className="relative max-w-[720px] mx-auto">
-            <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-textSecondary" />
+          <h1 className="text-[36px] md:text-hero font-bold text-white leading-[1.15] tracking-[-0.03em] max-w-2xl">
+            Global Standards for{"\n"}Pharmaceutical Quality
+          </h1>
+          <p className="mt-5 text-lg text-white/70 max-w-xl">
+            Bringing together regulatory authorities and the pharmaceutical
+            industry to ensure safe, effective and high-quality medicines.
+          </p>
+
+          {/* Search */}
+          <div className="relative mt-10 max-w-2xl">
+            <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-textMuted pointer-events-none" />
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search guidelines, training, consultations..."
-              className="w-full h-14 rounded-xl border-0 bg-white py-3 pl-14 pr-4 text-base text-textPrimary placeholder:text-textSecondary focus:outline-none focus:ring-2 focus:ring-secondary/30 shadow-lg"
+              className="w-full h-14 rounded-xl bg-white pl-14 pr-5 text-[16px] text-textPrimary placeholder:text-textMuted focus:outline-none focus:ring-2 focus:ring-secondary/30 shadow-elevated transition-shadow"
             />
             {hasResults && (
-              <div className="absolute top-full left-0 right-0 mt-2 rounded-xl bg-white p-4 shadow-xl z-10 text-left max-h-80 overflow-y-auto">
+              <div className="absolute top-full left-0 right-0 mt-2 rounded-xl bg-white shadow-elevated z-20 text-left max-h-[400px] overflow-y-auto border border-border">
                 {searchResults.guidelines.length > 0 && (
-                  <div className="mb-3">
-                    <div className="text-xs font-semibold uppercase tracking-wide text-textSecondary mb-2 px-2">
-                      Guidelines
-                    </div>
+                  <div className="p-4 pb-2">
+                    <div className="overline text-textMuted mb-2">Guidelines</div>
                     {searchResults.guidelines.map((g) => (
                       <Link
                         key={g.id}
                         href={`/guidelines/${encodeURIComponent(g.id)}`}
-                        className="flex items-center gap-3 rounded-md px-2 py-2 hover:bg-background transition-colors"
+                        className="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-backgroundAlt transition-colors"
                       >
                         <span className="font-mono text-sm text-secondary font-medium shrink-0">
                           {g.id}
@@ -142,15 +142,13 @@ export default function HomePage() {
                   </div>
                 )}
                 {searchResults.training.length > 0 && (
-                  <div className="mb-3">
-                    <div className="text-xs font-semibold uppercase tracking-wide text-textSecondary mb-2 px-2">
-                      Training
-                    </div>
+                  <div className="p-4 pt-2 pb-2 border-t border-border">
+                    <div className="overline text-textMuted mb-2">Training</div>
                     {searchResults.training.map((t) => (
                       <Link
                         key={t.id}
                         href="/training"
-                        className="flex items-center gap-3 rounded-md px-2 py-2 hover:bg-background transition-colors"
+                        className="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-backgroundAlt transition-colors"
                       >
                         <GraduationCap className="h-4 w-4 text-secondary shrink-0" />
                         <span className="text-sm text-textPrimary truncate">
@@ -161,15 +159,13 @@ export default function HomePage() {
                   </div>
                 )}
                 {searchResults.consultations.length > 0 && (
-                  <div>
-                    <div className="text-xs font-semibold uppercase tracking-wide text-textSecondary mb-2 px-2">
-                      Consultations
-                    </div>
+                  <div className="p-4 pt-2 border-t border-border">
+                    <div className="overline text-textMuted mb-2">Consultations</div>
                     {searchResults.consultations.map((c) => (
                       <Link
                         key={c.id}
                         href="/consultations"
-                        className="flex items-center gap-3 rounded-md px-2 py-2 hover:bg-background transition-colors"
+                        className="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-backgroundAlt transition-colors"
                       >
                         <MessageSquare className="h-4 w-4 text-secondary shrink-0" />
                         <span className="text-sm text-textPrimary truncate">
@@ -182,300 +178,191 @@ export default function HomePage() {
               </div>
             )}
           </div>
-          {/* Quick filter pills */}
-          <div className="mt-6 flex flex-wrap justify-center gap-3">
-            {categories.map((cat) => (
-              <Link
-                key={cat}
-                href={`/guidelines?category=${cat}`}
-                className="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white/90 transition-colors hover:bg-white/20"
-              >
-                {cat}
-              </Link>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* User Journey Selector */}
-      <section className="bg-background">
-        <div className="mx-auto max-w-content px-6 py-12">
-          <h2 className="text-center mb-8">How can we help you?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Card A: Guidelines */}
-            <div className="card p-8">
-              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-secondary/10">
+      {/* ============ USER JOURNEY ============ */}
+      <section className="bg-white">
+        <div ref={journeyRef} className="container-content section-gap fade-up">
+          <div className="text-center mb-12">
+            <p className="overline mb-3">FIND WHAT YOU NEED</p>
+            <h2>How can we help you?</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {/* Card 1 */}
+            <Link
+              href="/guidelines"
+              className="card group p-10 hover:border-l-4 hover:border-l-secondary hover:pl-9 transition-all"
+            >
+              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-secondary/10">
                 <BookOpen className="h-7 w-7 text-secondary" />
               </div>
-              <h3 className="text-xl mb-2">Find &amp; Use ICH Guidelines</h3>
-              <p className="text-sm text-textSecondary leading-relaxed mb-6">
+              <h3 className="text-xl font-semibold mb-3">
+                I&apos;m looking for ICH Guidelines
+              </h3>
+              <p className="text-sm text-textMuted leading-relaxed mb-6">
                 Access the full library of ICH harmonised guidelines, track
                 updates, find related training and check implementation status.
               </p>
-              <Link
-                href="/guidelines"
-                className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary/90"
-              >
+              <span className="inline-flex items-center gap-2 text-sm font-semibold text-secondary group-hover:gap-3 transition-all">
                 Browse Guidelines <ArrowRight className="h-4 w-4" />
-              </Link>
-              <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1">
-                <Link
-                  href="/updates"
-                  className="text-sm text-secondary hover:underline"
-                >
-                  What&apos;s New
-                </Link>
-                <Link
-                  href="/consultations"
-                  className="text-sm text-secondary hover:underline"
-                >
-                  Public Consultations
-                </Link>
-                <Link
-                  href="/training"
-                  className="text-sm text-secondary hover:underline"
-                >
-                  Training Library
-                </Link>
-              </div>
-            </div>
+              </span>
+            </Link>
 
-            {/* Card B: Governance */}
-            <div className="card p-8">
-              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-secondary/10">
+            {/* Card 2 */}
+            <Link
+              href="/about"
+              className="card group p-10 hover:border-l-4 hover:border-l-secondary hover:pl-9 transition-all"
+            >
+              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-secondary/10">
                 <Building2 className="h-7 w-7 text-secondary" />
               </div>
-              <h3 className="text-xl mb-2">
-                ICH Governance &amp; Process
+              <h3 className="text-xl font-semibold mb-3">
+                I want to learn about ICH
               </h3>
-              <p className="text-sm text-textSecondary leading-relaxed mb-6">
+              <p className="text-sm text-textMuted leading-relaxed mb-6">
                 Learn about ICH&apos;s structure, members, working groups,
                 assembly meetings and the harmonisation process.
               </p>
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary/90"
-              >
-                View Governance <ArrowRight className="h-4 w-4" />
-              </Link>
-              <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1">
-                <Link
-                  href="/about#members"
-                  className="text-sm text-secondary hover:underline"
-                >
-                  Members &amp; Observers
-                </Link>
-                <Link
-                  href="/about#assemblies"
-                  className="text-sm text-secondary hover:underline"
-                >
-                  Assembly Meetings
-                </Link>
-                <Link
-                  href="/about#process"
-                  className="text-sm text-secondary hover:underline"
-                >
-                  Process of Harmonisation
-                </Link>
-              </div>
-            </div>
+              <span className="inline-flex items-center gap-2 text-sm font-semibold text-secondary group-hover:gap-3 transition-all">
+                View About ICH <ArrowRight className="h-4 w-4" />
+              </span>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* What's New */}
-      <section className="bg-surface">
-        <div className="mx-auto max-w-content px-6 py-16">
-          <div className="flex items-center justify-between mb-8">
-            <h2>What&apos;s New</h2>
+      {/* ============ WHAT'S NEW ============ */}
+      <section className="bg-backgroundAlt">
+        <div ref={updatesRef} className="container-content section-gap fade-up">
+          <div className="flex items-end justify-between mb-10">
+            <div>
+              <p className="overline mb-3">STAY INFORMED</p>
+              <h2>Latest Updates</h2>
+            </div>
             <Link
               href="/updates"
-              className="flex items-center gap-1 text-sm font-medium text-secondary hover:underline"
+              className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-secondary hover:gap-3 transition-all"
             >
               View all <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <div className="space-y-4">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {latestUpdates.map((u) => {
               const config = updateTypeConfig[u.type];
               return (
-                <div
-                  key={u.id}
-                  className="card flex items-start gap-0 overflow-hidden"
-                >
-                  {/* Gold left bar */}
-                  <div className="w-1 shrink-0 self-stretch bg-accent" />
-                  <div className="flex-1 p-5 flex items-start gap-4">
-                    <div className="shrink-0 text-xs text-textSecondary w-20 pt-0.5">
-                      {u.date}
+                <div key={u.id} className="card p-0 overflow-hidden">
+                  <div className="p-6">
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="text-xs text-textMuted">{u.date}</span>
+                      <span
+                        className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold ${config.color}`}
+                      >
+                        {config.label}
+                      </span>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span
-                          className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold ${config.color}`}
-                        >
-                          {config.label}
+                    <h3 className="text-[17px] font-semibold leading-snug mb-2 text-textPrimary line-clamp-2">
+                      {u.title}
+                    </h3>
+                    <p className="text-sm text-textMuted leading-relaxed line-clamp-2 mb-4">
+                      {u.description}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      {u.guidelineId && (
+                        <span className="font-mono text-xs text-secondary font-medium">
+                          {u.guidelineId}
                         </span>
-                        {u.fromStep != null && u.toStep != null && (
-                          <span className="text-xs font-medium text-primary">
-                            Step {u.fromStep} → Step {u.toStep}
-                          </span>
-                        )}
-                      </div>
-                      <Link
-                        href="/updates"
-                        className="font-semibold text-textPrimary hover:text-secondary transition-colors leading-snug"
-                      >
-                        {u.title}
-                      </Link>
-                      <p className="text-sm text-textSecondary mt-1 line-clamp-1">
-                        {u.description}
-                      </p>
+                      )}
+                      <ArrowRight className="h-4 w-4 text-textMuted ml-auto" />
                     </div>
-                    {u.guidelineId && (
-                      <Link
-                        href={`/guidelines/${encodeURIComponent(u.guidelineId)}`}
-                        className="shrink-0 font-mono text-xs text-secondary font-medium hover:underline mt-0.5"
-                      >
-                        {u.guidelineId}
-                      </Link>
-                    )}
                   </div>
                 </div>
               );
             })}
           </div>
-        </div>
-      </section>
 
-      {/* Quick Access Grid */}
-      <section className="bg-background">
-        <div className="mx-auto max-w-content px-6 py-16">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Link href="/guidelines" className="card p-6 hover:no-underline group">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-secondary/10">
-                <BookOpen className="h-6 w-6 text-secondary" />
-              </div>
-              <div className="text-2xl font-bold text-primary mb-1">
-                {typedGuidelines.length}+ Guidelines
-              </div>
-              <p className="text-sm text-textSecondary leading-relaxed">
-                Browse the complete collection of ICH harmonised guidelines
-                across Quality, Safety, Efficacy and Multidisciplinary topics.
-              </p>
-            </Link>
-
-            <Link href="/consultations" className="card p-6 hover:no-underline group">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-secondary/10">
-                <MessageSquare className="h-6 w-6 text-secondary" />
-              </div>
-              <div className="text-2xl font-bold text-primary mb-1">
-                {openConsultations} Open
-              </div>
-              <p className="text-sm text-textSecondary leading-relaxed">
-                Review and comment on draft ICH guidelines currently open for
-                public consultation.
-              </p>
-            </Link>
-
-            <Link href="/training" className="card p-6 hover:no-underline group">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-secondary/10">
-                <GraduationCap className="h-6 w-6 text-secondary" />
-              </div>
-              <div className="text-2xl font-bold text-primary mb-1">
-                {typedTraining.length} Modules
-              </div>
-              <p className="text-sm text-textSecondary leading-relaxed">
-                Access guideline-specific training materials including videos,
-                webinars and implementation guides.
-              </p>
-            </Link>
-
-            <Link href="/about" className="card p-6 hover:no-underline group">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-secondary/10">
-                <Globe className="h-6 w-6 text-secondary" />
-              </div>
-              <div className="text-2xl font-bold text-primary mb-1">
-                {gov.members.length} Members
-              </div>
-              <p className="text-sm text-textSecondary leading-relaxed">
-                Track which ICH members have implemented each guideline in their
-                regulatory framework.
-              </p>
-            </Link>
-
-            <Link href="/meddra" className="card p-6 hover:no-underline group">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-secondary/10">
-                <Stethoscope className="h-6 w-6 text-secondary" />
-              </div>
-              <div className="text-2xl font-bold text-primary mb-1">
-                {meddra.languages.length} Languages
-              </div>
-              <p className="text-sm text-textSecondary leading-relaxed">
-                The global medical terminology standard for regulatory
-                communication — maintained by ICH.
-              </p>
+          <div className="sm:hidden mt-6 text-center">
+            <Link
+              href="/updates"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-secondary"
+            >
+              View all updates <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Upcoming Events */}
-      {upcomingEvents.length > 0 && (
-        <section className="bg-surface">
-          <div className="mx-auto max-w-content px-6 py-12">
-            <h2 className="mb-8">Upcoming Events</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {upcomingEvents.map((event) => (
-                <div key={event.id} className="card p-6">
-                  <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1">
-                    <Calendar className="h-3.5 w-3.5 text-primary" />
-                    <span className="text-xs font-semibold text-primary">
-                      {event.date}
-                    </span>
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2">{event.title}</h3>
-                  <div className="flex items-center gap-1 text-sm text-textSecondary">
-                    <MapPin className="h-4 w-4 shrink-0" />
-                    {event.location}
-                  </div>
-                  <Link
-                    href="/about#assemblies"
-                    className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-secondary hover:underline"
-                  >
-                    Learn more <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              ))}
-            </div>
+      {/* ============ QUICK ACCESS ============ */}
+      <section className="bg-white">
+        <div ref={quickRef} className="container-content section-gap fade-up">
+          <div className="text-center mb-12">
+            <p className="overline mb-3">EXPLORE</p>
+            <h2>Quick Access</h2>
           </div>
-        </section>
-      )}
 
-      {/* Stats Bar */}
-      <section className="bg-primary text-white">
-        <div className="mx-auto max-w-content px-6 py-8">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { value: `${typedGuidelines.length}+`, label: "Guidelines" },
-              { value: String(gov.members.length), label: "Members" },
-              { value: "30+", label: "Years" },
-              { value: String(typedTraining.length), label: "Training Modules" },
               {
-                value: `${meddra.languages.length}`,
-                label: "Languages (MedDRA)",
+                icon: BookOpen,
+                title: "Guidelines",
+                desc: `${typedGuidelines.length}+ harmonised guidelines across Quality, Safety, Efficacy and Multidisciplinary.`,
+                href: "/guidelines",
+                borderColor: "border-t-primary",
               },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold">
-                  {stat.value}
+              {
+                icon: GraduationCap,
+                title: "Training",
+                desc: `${typedTraining.length} training modules including videos, webinars and implementation guides.`,
+                href: "/training",
+                borderColor: "border-t-secondary",
+              },
+              {
+                icon: MessageSquare,
+                title: "Consultations",
+                desc: `${openConsultations} open consultations. Review and comment on draft ICH guidelines.`,
+                href: "/consultations",
+                borderColor: "border-t-accent",
+              },
+              {
+                icon: Stethoscope,
+                title: "MedDRA",
+                desc: "The global medical terminology standard for regulatory communication.",
+                href: "/meddra",
+                borderColor: "border-t-success",
+              },
+            ].map((item) => (
+              <Link
+                key={item.title}
+                href={item.href}
+                className={`card group p-6 border-t-4 ${item.borderColor} hover:no-underline`}
+              >
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-backgroundAlt">
+                  <item.icon className="h-6 w-6 text-primary" />
                 </div>
-                <div className="mt-1 text-sm text-white/70">{stat.label}</div>
-              </div>
+                <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+                <p className="text-sm text-textMuted leading-relaxed mb-4">
+                  {item.desc}
+                </p>
+                <span className="inline-flex items-center gap-2 text-sm font-semibold text-secondary group-hover:gap-3 transition-all">
+                  Explore <ArrowRight className="h-4 w-4" />
+                </span>
+              </Link>
             ))}
           </div>
         </div>
       </section>
+
+      {/* ============ STATS BAR ============ */}
+      <StatsBar
+        stats={[
+          { value: `${typedGuidelines.length}+`, label: "Guidelines" },
+          { value: "20+", label: "Years" },
+          { value: String(gov.members.length), label: "Members" },
+          { value: String(gov.observers.length), label: "Observers" },
+        ]}
+      />
     </div>
   );
 }

@@ -1,10 +1,12 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import Link from "next/link";
+import { Search } from "lucide-react";
 import training from "@/data/training.json";
 import { Training, Category, TrainingType } from "@/types";
 import TrainingCard from "@/components/TrainingCard";
+import CategoryBadge from "@/components/CategoryBadge";
+import HeroSection from "@/components/HeroSection";
 
 const typedTraining = training as Training[];
 const categories: Category[] = [
@@ -20,28 +22,19 @@ const trainingTypes: TrainingType[] = [
   "e-learning",
 ];
 
-const relatedGuidelineIds = Array.from(
-  new Set(typedTraining.map((t) => t.relatedGuideline))
-).sort();
-
 export default function TrainingPage() {
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(
     null
   );
   const [selectedType, setSelectedType] = useState<TrainingType | null>(null);
-  const [selectedGuideline, setSelectedGuideline] = useState<string>("");
 
   const filtered = useMemo(() => {
     let result = [...typedTraining];
 
     if (search.trim()) {
       const q = search.toLowerCase();
-      result = result.filter(
-        (t) =>
-          t.title.toLowerCase().includes(q) ||
-          t.relatedGuideline.toLowerCase().includes(q)
-      );
+      result = result.filter((t) => t.title.toLowerCase().includes(q));
     }
 
     if (selectedCategory) {
@@ -52,152 +45,122 @@ export default function TrainingPage() {
       result = result.filter((t) => t.type === selectedType);
     }
 
-    if (selectedGuideline) {
-      result = result.filter((t) => t.relatedGuideline === selectedGuideline);
-    }
-
     return result;
-  }, [search, selectedCategory, selectedType, selectedGuideline]);
+  }, [search, selectedCategory, selectedType]);
 
   const clearAll = () => {
     setSearch("");
     setSelectedCategory(null);
     setSelectedType(null);
-    setSelectedGuideline("");
   };
 
   const hasFilters =
     search.trim() !== "" ||
     selectedCategory !== null ||
-    selectedType !== null ||
-    selectedGuideline !== "";
+    selectedType !== null;
 
   return (
-    <div className="container-content section-gap">
-      {/* Breadcrumb */}
-      <nav className="mb-6 text-sm text-textSecondary">
-        <Link href="/" className="hover:text-secondary">
-          Home
-        </Link>
-        <span className="mx-2">&gt;</span>
-        <span className="text-textPrimary font-medium">Training</span>
-      </nav>
+    <>
+      <HeroSection
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Training" },
+        ]}
+        title="Training Materials"
+        subtitle="Access guideline-specific training resources to support implementation and consistent understanding of ICH guidelines worldwide."
+      />
 
-      <div className="mb-6">
-        <h1 className="mb-2">Training Library</h1>
-        <p className="text-textSecondary max-w-3xl">
-          Access guideline-specific training materials to support implementation
-          and consistent understanding of ICH guidelines worldwide.
-        </p>
-      </div>
+      <section className="bg-white">
+        <div className="container-content py-10 lg:py-14">
+          {/* Search */}
+          <div className="relative mb-8">
+            <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-textMuted pointer-events-none" />
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search training modules..."
+              className="w-full rounded-xl border border-border bg-white py-3.5 pl-14 pr-5 text-base text-textPrimary placeholder:text-textMuted shadow-card focus:shadow-search focus:outline-none transition-all duration-300"
+            />
+          </div>
 
-      {/* Search + Filters */}
-      <div className="mb-8 space-y-4">
-        <div className="relative">
-          <svg
-            className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-textSecondary"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <circle cx="11" cy="11" r="8" />
-            <path d="m21 21-4.3-4.3" />
-          </svg>
-          <input
-            type="text"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search training modules..."
-            className="w-full rounded-lg border border-border bg-white py-3 pl-12 pr-4 text-base text-textPrimary placeholder:text-textSecondary focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary/20"
-          />
-        </div>
-
-        <div className="flex flex-wrap items-center gap-3">
-          {/* Category filter */}
-          <select
-            value={selectedCategory || ""}
-            onChange={(e) =>
-              setSelectedCategory(
-                e.target.value ? (e.target.value as Category) : null
-              )
-            }
-            className="rounded-md border border-border bg-surface px-3 py-2 text-sm text-textPrimary"
-          >
-            <option value="">All Categories</option>
+          {/* Category filter row */}
+          <div className="mb-4 flex flex-wrap items-center gap-2">
+            <span className="text-sm font-medium text-textMuted mr-1">Category:</span>
             {categories.map((cat) => (
-              <option key={cat} value={cat}>
-                {cat}
-              </option>
+              <button
+                key={cat}
+                onClick={() =>
+                  setSelectedCategory(selectedCategory === cat ? null : cat)
+                }
+                className={`transition-all duration-200 ${
+                  selectedCategory === cat
+                    ? "ring-2 ring-secondary ring-offset-1 rounded-full"
+                    : "opacity-70 hover:opacity-100"
+                }`}
+              >
+                <CategoryBadge category={cat} />
+              </button>
             ))}
-          </select>
+          </div>
 
-          {/* Type filter */}
-          <select
-            value={selectedType || ""}
-            onChange={(e) =>
-              setSelectedType(
-                e.target.value ? (e.target.value as TrainingType) : null
-              )
-            }
-            className="rounded-md border border-border bg-surface px-3 py-2 text-sm text-textPrimary"
-          >
-            <option value="">All Types</option>
+          {/* Type filter row */}
+          <div className="mb-8 flex flex-wrap items-center gap-2">
+            <span className="text-sm font-medium text-textMuted mr-1">Type:</span>
             {trainingTypes.map((t) => (
-              <option key={t} value={t}>
+              <button
+                key={t}
+                onClick={() =>
+                  setSelectedType(selectedType === t ? null : t)
+                }
+                className={`rounded-full px-3.5 py-1 text-xs font-semibold border transition-all duration-200 ${
+                  selectedType === t
+                    ? "bg-primary text-white border-primary"
+                    : "bg-backgroundAlt text-textMuted border-border hover:border-secondary hover:text-secondary"
+                }`}
+              >
                 {t.charAt(0).toUpperCase() + t.slice(1)}
-              </option>
+              </button>
             ))}
-          </select>
+          </div>
 
-          {/* Guideline filter */}
-          <select
-            value={selectedGuideline}
-            onChange={(e) => setSelectedGuideline(e.target.value)}
-            className="rounded-md border border-border bg-surface px-3 py-2 text-sm text-textPrimary"
-          >
-            <option value="">All Guidelines</option>
-            {relatedGuidelineIds.map((id) => (
-              <option key={id} value={id}>
-                {id}
-              </option>
-            ))}
-          </select>
+          {/* Results count + clear */}
+          <div className="mb-6 flex items-center justify-between">
+            <p className="text-sm text-textMuted !text-textMuted">
+              {filtered.length} of {typedTraining.length} modules
+            </p>
+            {hasFilters && (
+              <button
+                onClick={clearAll}
+                className="text-sm font-medium text-secondary hover:underline"
+              >
+                Clear filters
+              </button>
+            )}
+          </div>
 
-          {hasFilters && (
-            <button
-              onClick={clearAll}
-              className="text-sm text-textSecondary underline hover:text-secondary"
-            >
-              Clear all
-            </button>
+          {/* Grid */}
+          {filtered.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filtered.map((t) => (
+                <TrainingCard key={t.id} training={t} />
+              ))}
+            </div>
+          ) : (
+            <div className="py-20 text-center">
+              <p className="text-lg text-textMuted">
+                No training modules match your current filters.
+              </p>
+              <button
+                onClick={clearAll}
+                className="mt-4 text-sm font-semibold text-secondary hover:underline"
+              >
+                Clear all filters
+              </button>
+            </div>
           )}
         </div>
-      </div>
-
-      <p className="mb-4 text-sm text-textSecondary">
-        Showing {filtered.length} of {typedTraining.length} training modules
-      </p>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filtered.map((t) => (
-          <TrainingCard key={t.id} training={t} />
-        ))}
-      </div>
-
-      {filtered.length === 0 && (
-        <div className="py-16 text-center">
-          <p className="text-lg text-textSecondary">
-            No training modules match your filters.
-          </p>
-          <button
-            onClick={clearAll}
-            className="mt-4 text-sm font-medium text-secondary hover:underline"
-          >
-            Clear all filters
-          </button>
-        </div>
-      )}
-    </div>
+      </section>
+    </>
   );
 }

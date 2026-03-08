@@ -1,5 +1,3 @@
-"use client";
-
 import { Step } from "@/types";
 
 const stepStyles: Record<string, string> = {
