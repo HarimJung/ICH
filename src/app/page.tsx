@@ -120,12 +120,15 @@ export default function HomePage() {
               const config = updateTypeConfig[u.type];
               return (
                 <Link key={u.id} href="/updates" className="group block">
-                  <div className="w-full aspect-[4/3] bg-[#F4F7FA] border border-border rounded-sm mb-3 overflow-hidden flex items-end p-3">
-                    <span className={`text-[11px] font-semibold px-2 py-0.5 rounded-sm ${config.color}`}>
+                  <div className="w-full aspect-[4/3] bg-[#F4F7FA] border border-border rounded-sm mb-3 overflow-hidden relative flex flex-col justify-between p-4">
+                    <span className={`self-start text-[11px] font-semibold px-2 py-0.5 rounded-sm ${config.color}`}>
                       {config.label}
                     </span>
+                    <p className="absolute right-4 top-1/2 -translate-y-1/2 text-[72px] font-black text-primary/5 leading-none tabular-nums select-none">
+                      {u.date.slice(0, 4)}
+                    </p>
+                    <p className="text-[12px] text-textSecondary relative z-10">{u.date}</p>
                   </div>
-                  <p className="text-[12px] text-textSecondary mb-1">{u.date}</p>
                   <h4 className="text-[14px] font-semibold text-textPrimary leading-snug group-hover:text-primary transition-colors line-clamp-2">
                     {u.title}
                   </h4>
