@@ -1,12 +1,12 @@
 import { Step } from "@/types";
 
 const stepStyles: Record<string, string> = {
-  "1": "bg-gray-100 text-gray-600",
-  "2a": "bg-amber-50 text-amber-700",
-  "2b": "bg-amber-100 text-amber-800",
-  "3": "bg-teal-50 text-teal-700",
-  "4": "bg-blue-50 text-blue-800",
-  "5": "bg-green-50 text-green-800",
+  "1": "bg-gray-100 text-gray-700",
+  "2a": "bg-gray-100 text-gray-700",
+  "2b": "bg-gray-100 text-gray-700",
+  "3": "bg-gray-100 text-gray-700",
+  "4": "bg-gray-100 text-gray-700",
+  "5": "bg-gray-100 text-gray-700",
 };
 
 const stepLabels: Record<number, string> = {

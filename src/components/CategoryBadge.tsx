@@ -1,10 +1,10 @@
 import { Category } from "@/types";
 
 const categoryStyles: Record<Category, string> = {
-  Quality: "bg-blue-50 text-[#003B5C] border-blue-200",
-  Safety: "bg-red-50 text-red-700 border-red-200",
-  Efficacy: "bg-purple-50 text-purple-700 border-purple-200",
-  Multidisciplinary: "bg-teal-50 text-[#00838F] border-teal-200",
+  Quality: "bg-gray-100 text-gray-700 border-gray-300",
+  Safety: "bg-gray-100 text-gray-700 border-gray-300",
+  Efficacy: "bg-gray-100 text-gray-700 border-gray-300",
+  Multidisciplinary: "bg-gray-100 text-gray-700 border-gray-300",
 };
 
 export default function CategoryBadge({ category }: { category: Category }) {

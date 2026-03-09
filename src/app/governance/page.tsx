@@ -12,12 +12,12 @@ const tabs = ["Members & Observers", "Assembly Meetings", "Process of Harmonisat
 type TabName = (typeof tabs)[number];
 
 const stepData = [
-  { num: 1, label: "Step 1", title: "Consensus Building", description: "Expert Working Group prepares a draft guideline through scientific consensus among regulatory and industry experts.", color: "bg-gray-100 text-gray-600 border-gray-300" },
-  { num: 2, label: "Step 2a", title: "Regulatory Sign-off", description: "The ICH Assembly confirms the draft is ready for public consultation by the regulatory members.", color: "bg-amber-50 text-amber-700 border-amber-300" },
-  { num: 2, label: "Step 2b", title: "Public Consultation", description: "The draft guideline is released for public comment, typically for a 90-day consultation period across all ICH regions.", color: "bg-amber-100 text-amber-800 border-amber-400" },
-  { num: 3, label: "Step 3", title: "Regulatory Review", description: "Comments are reviewed and incorporated. The Expert Working Group finalizes the document for adoption.", color: "bg-teal-50 text-teal-700 border-teal-300" },
-  { num: 4, label: "Step 4", title: "Adoption", description: "The ICH Assembly endorses the final guideline. It is now an official ICH harmonised guideline.", color: "bg-blue-50 text-blue-800 border-blue-300" },
-  { num: 5, label: "Step 5", title: "Implementation", description: "Each regulatory authority implements the guideline in their jurisdiction according to local procedures and timelines.", color: "bg-green-50 text-green-800 border-green-300" },
+  { num: 1, label: "Step 1", title: "Consensus Building", description: "Expert Working Group prepares a draft guideline through scientific consensus among regulatory and industry experts.", color: "bg-gray-100 text-gray-700 border-gray-300" },
+  { num: 2, label: "Step 2a", title: "Regulatory Sign-off", description: "The ICH Assembly confirms the draft is ready for public consultation by the regulatory members.", color: "bg-gray-100 text-gray-700 border-gray-300" },
+  { num: 2, label: "Step 2b", title: "Public Consultation", description: "The draft guideline is released for public comment, typically for a 90-day consultation period across all ICH regions.", color: "bg-gray-100 text-gray-700 border-gray-300" },
+  { num: 3, label: "Step 3", title: "Regulatory Review", description: "Comments are reviewed and incorporated. The Expert Working Group finalizes the document for adoption.", color: "bg-gray-100 text-gray-700 border-gray-300" },
+  { num: 4, label: "Step 4", title: "Adoption", description: "The ICH Assembly endorses the final guideline. It is now an official ICH harmonised guideline.", color: "bg-gray-100 text-gray-700 border-gray-300" },
+  { num: 5, label: "Step 5", title: "Implementation", description: "Each regulatory authority implements the guideline in their jurisdiction according to local procedures and timelines.", color: "bg-gray-100 text-gray-700 border-gray-300" },
 ];
 
 export default function GovernancePage() {
@@ -41,7 +41,7 @@ export default function GovernancePage() {
         <span className="text-lg">{m.flag}</span>
         <div>
           <span className="text-[14px] font-semibold text-primary">{m.name}</span>
-          <span className={`ml-2 rounded-full px-2 py-0.5 text-[11px] font-medium ${m.type === "regulatory" ? "bg-blue-50 text-primary" : "bg-blue-50 text-secondary"}`}>
+          <span className={`ml-2 rounded-full px-2 py-0.5 text-[11px] font-medium ${m.type === "regulatory" ? "bg-gray-100 text-gray-700" : "bg-gray-100 text-gray-700"}`}>
             {m.type === "regulatory" ? "Regulatory" : "Industry"}
           </span>
         </div>
@@ -137,7 +137,7 @@ export default function GovernancePage() {
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-1">
                             <span className="text-[15px] font-semibold text-textPrimary">{a.title}</span>
-                            <span className="rounded-full bg-green-50 text-green-800 px-2.5 py-0.5 text-[11px] font-semibold">Upcoming</span>
+                            <span className="rounded-full bg-gray-100 text-gray-700 px-2.5 py-0.5 text-[11px] font-semibold">Upcoming</span>
                           </div>
                           <div className="flex items-center gap-1 text-[13px] text-textSecondary"><MapPin className="h-3.5 w-3.5 shrink-0" />{a.location}</div>
                         </div>
@@ -162,7 +162,7 @@ export default function GovernancePage() {
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-1">
                             <span className="text-[15px] font-semibold text-textPrimary">{a.title}</span>
-                            <span className="rounded-full bg-gray-100 text-gray-600 px-2.5 py-0.5 text-[11px] font-semibold">Past</span>
+                            <span className="rounded-full bg-gray-100 text-gray-700 px-2.5 py-0.5 text-[11px] font-semibold">Past</span>
                           </div>
                           <div className="flex items-center gap-1 text-[13px] text-textSecondary"><MapPin className="h-3.5 w-3.5 shrink-0" />{a.location}</div>
                         </div>

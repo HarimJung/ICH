@@ -12,12 +12,12 @@ import HeroSection from "@/components/HeroSection";
 const typedUpdates = updates as Update[];
 
 const typeConfig: Record<UpdateType, { icon: React.ComponentType<{ className?: string }>; label: string; color: string; dotColor: string }> = {
-  step_change: { icon: ArrowUpCircle, label: "Guidelines", color: "bg-blue-50 text-blue-800", dotColor: "bg-blue-500" },
-  consultation: { icon: MessageSquare, label: "Consultations", color: "bg-green-50 text-green-800", dotColor: "bg-green-500" },
-  training: { icon: GraduationCap, label: "Training", color: "bg-purple-50 text-purple-700", dotColor: "bg-purple-500" },
-  revision: { icon: FileEdit, label: "Guidelines", color: "bg-amber-50 text-amber-700", dotColor: "bg-amber-500" },
-  news: { icon: Newspaper, label: "News", color: "bg-blue-50 text-blue-700", dotColor: "bg-blue-500" },
-  event: { icon: Calendar, label: "Events", color: "bg-red-50 text-red-700", dotColor: "bg-red-500" },
+  step_change: { icon: ArrowUpCircle, label: "Guidelines", color: "bg-gray-100 text-gray-700", dotColor: "bg-gray-400" },
+  consultation: { icon: MessageSquare, label: "Consultations", color: "bg-gray-100 text-gray-700", dotColor: "bg-gray-400" },
+  training: { icon: GraduationCap, label: "Training", color: "bg-gray-100 text-gray-700", dotColor: "bg-gray-400" },
+  revision: { icon: FileEdit, label: "Guidelines", color: "bg-gray-100 text-gray-700", dotColor: "bg-gray-400" },
+  news: { icon: Newspaper, label: "News", color: "bg-gray-100 text-gray-700", dotColor: "bg-gray-400" },
+  event: { icon: Calendar, label: "Events", color: "bg-gray-100 text-gray-700", dotColor: "bg-gray-400" },
 };
 
 type FilterType = "all" | "guidelines" | "consultations" | "training" | "events" | "news";
@@ -96,7 +96,7 @@ export default function UpdatesPage() {
                 >
                   {f.label}
                   <span className={`ml-1.5 rounded-full px-2 py-0.5 text-xs font-semibold ${
-                    activeFilter === f.value ? "bg-secondary/10 text-secondary" : "bg-gray-100 text-gray-500"
+                    activeFilter === f.value ? "bg-gray-200 text-textPrimary" : "bg-gray-100 text-gray-500"
                   }`}>
                     {counts[f.value]}
                   </span>
@@ -140,7 +140,7 @@ export default function UpdatesPage() {
                             <div className="mt-3">
                               <Link
                                 href={`/guidelines/${encodeURIComponent(u.guidelineId)}`}
-                                className="font-mono text-xs text-secondary font-medium rounded bg-secondary/10 px-2 py-0.5 hover:underline"
+                                className="font-mono text-xs text-primary font-medium rounded bg-gray-100 px-2 py-0.5 hover:underline"
                               >
                                 {u.guidelineId}
                               </Link>

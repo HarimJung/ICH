@@ -14,12 +14,12 @@ const typeConfig: Record<
   Update["type"],
   { icon: React.ComponentType<{ className?: string }>; label: string; color: string }
 > = {
-  step_change: { icon: ArrowUpCircle, label: "Step Change", color: "bg-blue-50 text-blue-800" },
-  consultation: { icon: MessageSquare, label: "Consultation", color: "bg-green-50 text-green-800" },
-  training: { icon: GraduationCap, label: "Training", color: "bg-purple-50 text-purple-700" },
-  revision: { icon: FileEdit, label: "Revision", color: "bg-amber-50 text-amber-700" },
-  news: { icon: Newspaper, label: "News", color: "bg-teal-50 text-teal-700" },
-  event: { icon: Calendar, label: "Event", color: "bg-red-50 text-red-700" },
+  step_change: { icon: ArrowUpCircle, label: "Step Change", color: "bg-gray-100 text-gray-700" },
+  consultation: { icon: MessageSquare, label: "Consultation", color: "bg-gray-100 text-gray-700" },
+  training: { icon: GraduationCap, label: "Training", color: "bg-gray-100 text-gray-700" },
+  revision: { icon: FileEdit, label: "Revision", color: "bg-gray-100 text-gray-700" },
+  news: { icon: Newspaper, label: "News", color: "bg-gray-100 text-gray-700" },
+  event: { icon: Calendar, label: "Event", color: "bg-gray-100 text-gray-700" },
 };
 
 export default function UpdateCard({ update }: { update: Update }) {

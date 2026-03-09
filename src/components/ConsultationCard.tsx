@@ -3,9 +3,9 @@ import { ArrowRight } from "lucide-react";
 import { Consultation } from "@/types";
 
 const statusStyles: Record<Consultation["status"], string> = {
-  open: "bg-green-50 text-green-800",
-  closed: "bg-gray-100 text-gray-600",
-  upcoming: "bg-amber-50 text-amber-700",
+  open: "bg-gray-100 text-gray-700",
+  closed: "bg-gray-100 text-gray-700",
+  upcoming: "bg-gray-100 text-gray-700",
 };
 
 const statusLabels: Record<Consultation["status"], string> = {

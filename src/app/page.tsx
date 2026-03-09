@@ -33,12 +33,12 @@ const updateTypeConfig: Record<
   string,
   { icon: React.ComponentType<{ className?: string }>; label: string; color: string }
 > = {
-  step_change: { icon: ArrowUpCircle, label: "Step Change", color: "bg-blue-50 text-blue-800" },
-  consultation: { icon: MessageSquare, label: "Consultation", color: "bg-green-50 text-green-800" },
-  training: { icon: GraduationCap, label: "Training", color: "bg-purple-50 text-purple-700" },
-  revision: { icon: FileEdit, label: "Revision", color: "bg-amber-50 text-amber-700" },
-  news: { icon: Newspaper, label: "News", color: "bg-teal-50 text-teal-700" },
-  event: { icon: Calendar, label: "Event", color: "bg-red-50 text-red-700" },
+  step_change: { icon: ArrowUpCircle, label: "Step Change", color: "bg-gray-100 text-gray-700" },
+  consultation: { icon: MessageSquare, label: "Consultation", color: "bg-gray-100 text-gray-700" },
+  training: { icon: GraduationCap, label: "Training", color: "bg-gray-100 text-gray-700" },
+  revision: { icon: FileEdit, label: "Revision", color: "bg-gray-100 text-gray-700" },
+  news: { icon: Newspaper, label: "News", color: "bg-gray-100 text-gray-700" },
+  event: { icon: Calendar, label: "Event", color: "bg-gray-100 text-gray-700" },
 };
 
 export default function HomePage() {
@@ -72,7 +72,7 @@ export default function HomePage() {
             {/* Main feature — left 2 cols */}
             <div className="lg:col-span-2">
               <Link href="/updates" className="group block">
-                <div className="w-full aspect-[16/9] bg-[#003087] rounded-sm mb-4 overflow-hidden relative">
+                <div className="w-full aspect-[16/9] bg-[#0044FF] rounded-sm mb-4 overflow-hidden relative">
                   <div className="absolute inset-0 flex flex-col justify-between p-6">
                     <span className="self-start inline-block bg-white/15 text-white text-[11px] font-semibold px-3 py-1 rounded-sm uppercase tracking-wider">
                       Step change

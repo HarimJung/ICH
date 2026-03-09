@@ -88,7 +88,7 @@ export default function AboutPage() {
                 <div className="text-[13px] text-textSecondary mb-1">{m.fullName}</div>
                 <div className="flex items-center justify-between text-[12px] text-textSecondary">
                   <span>{m.region}</span>
-                  <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${m.type === "regulatory" ? "bg-blue-50 text-primary" : "bg-blue-50 text-secondary"}`}>
+                  <span className="rounded-full px-2 py-0.5 text-[11px] font-medium bg-gray-100 text-gray-700">
                     {m.type === "regulatory" ? "Regulatory" : "Industry"}
                   </span>
                 </div>
@@ -133,7 +133,7 @@ export default function AboutPage() {
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-1">
                     <span className="text-[15px] font-semibold text-textPrimary">{a.title}</span>
-                    <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-semibold ${a.status === "upcoming" ? "bg-green-50 text-green-800" : "bg-gray-100 text-gray-600"}`}>
+                    <span className="rounded-full px-2.5 py-0.5 text-[11px] font-semibold bg-gray-100 text-gray-700">
                       {a.status === "upcoming" ? "Upcoming" : "Past"}
                     </span>
                   </div>

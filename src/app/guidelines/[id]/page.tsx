@@ -90,7 +90,7 @@ export default function GuidelineDetailPage({ params }: { params: { id: string }
           <StepBadge step={guideline.step} />
           <CategoryBadge category={guideline.category} />
           {guideline.hasActiveConsultation && (
-            <span className="rounded-full bg-green-50 border border-green-200 px-3 py-1 text-xs font-semibold text-green-800">Open Consultation</span>
+            <span className="rounded-full bg-gray-100 border border-gray-300 px-3 py-1 text-xs font-semibold text-gray-700">Open Consultation</span>
           )}
         </div>
         <div className="flex flex-wrap gap-6 mt-3 text-[13px] text-textSecondary">
@@ -122,9 +122,9 @@ export default function GuidelineDetailPage({ params }: { params: { id: string }
                 <div className="flex gap-0 min-w-max">
                   {tabs.map((tab) => {
                     let badge: React.ReactNode = null;
-                    if (tab === "Training" && relatedTraining.length > 0) badge = <span className="ml-1.5 rounded-full bg-secondary/10 px-2 py-0.5 text-xs font-medium text-secondary">{relatedTraining.length}</span>;
-                    if (tab === "Implementation") badge = <span className="ml-1.5 rounded-full bg-secondary/10 px-2 py-0.5 text-xs font-medium text-secondary">{implementedCount}/{agencies.length}</span>;
-                    if (tab === "Consultations" && guideline.hasActiveConsultation) badge = <span className="ml-1.5 rounded-full bg-green-50 px-2 py-0.5 text-xs font-semibold text-green-800">Open</span>;
+                    if (tab === "Training" && relatedTraining.length > 0) badge = <span className="ml-1.5 rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-700">{relatedTraining.length}</span>;
+                    if (tab === "Implementation") badge = <span className="ml-1.5 rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-700">{implementedCount}/{agencies.length}</span>;
+                    if (tab === "Consultations" && guideline.hasActiveConsultation) badge = <span className="ml-1.5 rounded-full bg-gray-100 px-2 py-0.5 text-xs font-semibold text-gray-700">Open</span>;
                     return (
                       <button
                         key={tab}
@@ -168,7 +168,7 @@ export default function GuidelineDetailPage({ params }: { params: { id: string }
                         </div>
                         <div className="flex items-center gap-3">
                           <StepBadge step={entry.step as 1 | 2 | 3 | 4 | 5} />
-                          <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${entry.type === "Revision" ? "bg-amber-50 text-amber-700" : "bg-blue-50 text-blue-800"}`}>{entry.type}</span>
+                          <span className="rounded-full px-2.5 py-0.5 text-xs font-medium bg-gray-100 text-gray-700">{entry.type}</span>
                           <a href={guideline.pdfUrl} className="ml-auto text-sm text-secondary hover:underline flex items-center gap-1">
                             <Download className="h-3.5 w-3.5" /> Download
                           </a>
@@ -195,7 +195,7 @@ export default function GuidelineDetailPage({ params }: { params: { id: string }
                     <div className="space-y-4">
                       {relatedTraining.map((t) => (
                         <div key={t.id} className="bg-white border border-border flex items-center gap-4 p-5">
-                          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary/10">
+                          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gray-100">
                             <svg className="h-5 w-5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><polygon points="5 3 19 12 5 21 5 3" /></svg>
                           </div>
                           <div className="flex-1 min-w-0">
@@ -257,7 +257,7 @@ export default function GuidelineDetailPage({ params }: { params: { id: string }
                       {linkedConsultations.map((c) => (
                         <div key={c.id} className="bg-white border border-border p-6">
                           <div className="flex items-center gap-3 mb-3">
-                            <span className={`rounded-full px-3 py-1 text-xs font-semibold ${c.status === "open" ? "bg-green-50 text-green-800" : c.status === "upcoming" ? "bg-amber-50 text-amber-700" : "bg-gray-100 text-gray-600"}`}>
+                            <span className="rounded-full px-3 py-1 text-xs font-semibold bg-gray-100 text-gray-700">
                               {c.status.charAt(0).toUpperCase() + c.status.slice(1)}
                             </span>
                             {c.status === "open" && <span className="text-xs text-textMuted">{daysUntil(c.closeDate)} days remaining</span>}
@@ -318,7 +318,7 @@ export default function GuidelineDetailPage({ params }: { params: { id: string }
                 {activeConsultation && (
                   <div className="bg-white border-2 border-accent/30 p-6">
                     <div className="flex items-center gap-2 mb-3">
-                      <span className="rounded-full bg-green-50 px-3 py-1 text-xs font-semibold text-green-800">Open</span>
+                      <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-700">Open</span>
                       <span className="text-xs font-medium text-accent flex items-center gap-1"><Clock className="h-3.5 w-3.5" />{daysUntil(activeConsultation.closeDate)} days left</span>
                     </div>
                     <h4 className="text-sm font-semibold mb-2">Public Consultation</h4>

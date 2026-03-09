@@ -95,7 +95,7 @@ export default function TrainingPage() {
                 }
                 className={`transition-all duration-200 ${
                   selectedCategory === cat
-                    ? "ring-2 ring-secondary ring-offset-1 rounded-full"
+                    ? "ring-2 ring-gray-400 ring-offset-1 rounded-full"
                     : "opacity-70 hover:opacity-100"
                 }`}
               >

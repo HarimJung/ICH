@@ -240,7 +240,7 @@ function GuidelinesContent() {
                       role="switch"
                       aria-checked={consultationOnly}
                       onClick={() => { setConsultationOnly(!consultationOnly); setPage(1); }}
-                      className={`relative inline-flex h-6 w-11 shrink-0 rounded-full transition-colors ${consultationOnly ? "bg-secondary" : "bg-gray-200"}`}
+                      className={`relative inline-flex h-6 w-11 shrink-0 rounded-full transition-colors ${consultationOnly ? "bg-primary" : "bg-gray-200"}`}
                     >
                       <span className={`inline-block h-5 w-5 rounded-full bg-white shadow transform transition-transform mt-0.5 ${consultationOnly ? "translate-x-[22px]" : "translate-x-0.5"}`} />
                     </button>

@@ -27,7 +27,7 @@
 @layer components {
   /* IEA-style dark gradient hero */
   .hero-gradient {
-    background: linear-gradient(135deg, #001B2E 0%, #003B5C 50%, #004D73 100%);
+    background: linear-gradient(135deg, #001433 0%, #002266 50%, #0044FF 100%);
   }
 
   /* Overline label */

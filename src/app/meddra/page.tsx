@@ -56,7 +56,7 @@ export default function MedDRAPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {meddra.keyFacts.map((fact) => (
                 <div key={fact} className="bg-white border border-border p-5 flex items-start gap-4">
-                  <div className="flex h-7 w-7 shrink-0 items-center justify-center bg-green-50">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center bg-gray-100">
                     <CheckCircle2 className="h-4 w-4 text-success" />
                   </div>
                   <span className="text-sm text-textPrimary leading-relaxed">
