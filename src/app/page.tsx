@@ -72,22 +72,22 @@ export default function HomePage() {
             {/* Main feature — left 2 cols */}
             <div className="lg:col-span-2">
               <Link href="/updates" className="group block">
-                <div className="w-full aspect-[16/9] bg-[#0044FF] rounded-sm mb-4 overflow-hidden relative">
-                  <div className="absolute inset-0 flex flex-col justify-between p-6">
+                <div className="w-full aspect-[16/9] bg-primary rounded-sm overflow-hidden relative">
+                  <div className="absolute inset-0 flex flex-col justify-between p-7">
                     <span className="self-start inline-block bg-white/15 text-white text-[11px] font-semibold px-3 py-1 rounded-sm uppercase tracking-wider">
-                      Step change
+                      {latestUpdates[0]?.type?.replace("_", " ")}
                     </span>
                     <div>
-                      <p className="text-white/60 text-[13px] mb-1">{latestUpdates[0]?.date}</p>
-                      <h2 className="text-white text-[20px] font-bold leading-snug max-w-lg">
+                      <p className="text-white/50 text-[13px] mb-2">{latestUpdates[0]?.date}</p>
+                      <h2 className="text-white text-[24px] font-bold leading-snug max-w-xl mb-3">
                         {latestUpdates[0]?.title}
                       </h2>
+                      <p className="text-white/70 text-[14px] leading-relaxed max-w-lg line-clamp-2">
+                        {latestUpdates[0]?.description}
+                      </p>
                     </div>
                   </div>
                 </div>
-                <p className="text-[15px] text-textSecondary leading-relaxed mt-3">
-                  {latestUpdates[0]?.description}
-                </p>
               </Link>
             </div>
 
