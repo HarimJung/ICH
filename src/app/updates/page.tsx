@@ -90,7 +90,7 @@ export default function UpdatesPage() {
                   onClick={() => setActiveFilter(f.value)}
                   className={`px-4 py-3 text-[15px] font-medium whitespace-nowrap border-b-[3px] transition-colors ${
                     activeFilter === f.value
-                      ? "border-secondary text-textPrimary font-semibold"
+                      ? "border-primary text-textPrimary font-semibold"
                       : "border-transparent text-textMuted hover:text-textPrimary"
                   }`}
                 >

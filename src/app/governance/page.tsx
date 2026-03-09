@@ -68,7 +68,7 @@ export default function GovernancePage() {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`px-5 py-3 text-[15px] font-medium whitespace-nowrap border-b-[3px] transition-colors ${activeTab === tab ? "border-secondary text-textPrimary font-semibold" : "border-transparent text-textMuted hover:text-textPrimary"}`}
+                  className={`px-5 py-3 text-[15px] font-medium whitespace-nowrap border-b-[3px] transition-colors ${activeTab === tab ? "border-primary text-textPrimary font-semibold" : "border-transparent text-textMuted hover:text-textPrimary"}`}
                 >
                   {tab}
                 </button>

@@ -38,7 +38,7 @@ export default function AboutPage() {
               { icon: FileCheck, title: "Science-Based Standards", description: "Guidelines are developed through rigorous scientific assessment, ensuring safe, effective, and high-quality medicines reach patients worldwide." },
             ].map((item) => (
               <div key={item.title} className="bg-white border border-border p-6 shadow-card">
-                <div className="mb-4 w-10 h-10 flex items-center justify-center bg-[#EEF3FB]">
+                <div className="mb-4 w-10 h-10 flex items-center justify-center">
                   <item.icon className="h-5 w-5 text-primary" />
                 </div>
                 <h3 className="text-[15px] font-semibold text-textPrimary mb-2">{item.title}</h3>

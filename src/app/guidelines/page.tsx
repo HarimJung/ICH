@@ -183,7 +183,7 @@ function GuidelinesContent() {
               value={search}
               onChange={(e) => handleSearchChange(e.target.value)}
               placeholder="Search guidelines by ID, title, or keyword..."
-              className="w-full rounded-xl border border-border bg-white py-3.5 pl-14 pr-5 text-[16px] text-textPrimary placeholder:text-textMuted focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary/20 shadow-card focus:shadow-search transition-all duration-300"
+              className="w-full rounded-xl border border-border bg-white py-3.5 pl-14 pr-5 text-[16px] text-textPrimary placeholder:text-textMuted focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 shadow-card focus:shadow-search transition-all duration-300"
             />
           </div>
 
@@ -203,7 +203,7 @@ function GuidelinesContent() {
                           type="checkbox"
                           checked={selectedCategories.includes(cat)}
                           onChange={() => toggleCategory(cat)}
-                          className="h-4 w-4 rounded border-border text-secondary focus:ring-secondary"
+                          className="h-4 w-4 rounded border-border text-secondary focus:ring-primary"
                         />
                         <span className="text-sm text-textPrimary group-hover:text-secondary flex-1">
                           {cat}
@@ -223,7 +223,7 @@ function GuidelinesContent() {
                           type="checkbox"
                           checked={selectedSteps.includes(s)}
                           onChange={() => toggleStep(s)}
-                          className="h-4 w-4 rounded border-border text-secondary focus:ring-secondary"
+                          className="h-4 w-4 rounded border-border text-secondary focus:ring-primary"
                         />
                         <span className="text-sm text-textPrimary group-hover:text-secondary flex-1">
                           Step {s}
@@ -257,7 +257,7 @@ function GuidelinesContent() {
                 <div className="border-t border-border pt-4">
                   <button
                     onClick={() => exportCSV(filtered)}
-                    className="flex items-center gap-2 rounded-lg border border-border px-4 py-2.5 text-sm font-medium text-textPrimary hover:border-secondary hover:text-secondary transition-colors w-full justify-center"
+                    className="flex items-center gap-2 rounded-lg border border-border px-4 py-2.5 text-sm font-medium text-textPrimary hover:border-primary hover:text-primary transition-colors w-full justify-center"
                   >
                     <Download className="h-4 w-4" />
                     Export CSV
@@ -391,7 +391,7 @@ function GuidelinesContent() {
                   <button
                     onClick={() => setPage((p) => Math.max(1, p - 1))}
                     disabled={page === 1}
-                    className="flex items-center gap-1 rounded-lg border border-border px-4 py-2 text-sm text-textMuted hover:border-secondary hover:text-secondary disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                    className="flex items-center gap-1 rounded-lg border border-border px-4 py-2 text-sm text-textMuted hover:border-primary hover:text-primary disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                   >
                     <ChevronLeft className="h-4 w-4" /> Previous
                   </button>
@@ -416,7 +416,7 @@ function GuidelinesContent() {
                   <button
                     onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                     disabled={page === totalPages}
-                    className="flex items-center gap-1 rounded-lg border border-border px-4 py-2 text-sm text-textMuted hover:border-secondary hover:text-secondary disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                    className="flex items-center gap-1 rounded-lg border border-border px-4 py-2 text-sm text-textMuted hover:border-primary hover:text-primary disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                   >
                     Next <ChevronRight className="h-4 w-4" />
                   </button>

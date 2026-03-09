@@ -95,7 +95,7 @@ export default function ConsultationsPage() {
                   onClick={() => setActiveTab(tab.key)}
                   className={`px-5 py-3 text-[15px] font-medium border-b-[3px] transition-colors ${
                     activeTab === tab.key
-                      ? "border-secondary text-textPrimary font-semibold"
+                      ? "border-primary text-textPrimary font-semibold"
                       : "border-transparent text-textMuted hover:text-textPrimary"
                   }`}
                 >
@@ -184,7 +184,7 @@ export default function ConsultationsPage() {
                           <MessageSquare className="h-4 w-4" />
                           Submit Comment
                         </button>
-                        <button className="inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm font-medium text-textPrimary hover:border-secondary hover:text-secondary transition-colors">
+                        <button className="inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm font-medium text-textPrimary hover:border-primary hover:text-primary transition-colors">
                           <FileText className="h-4 w-4" />
                           View Draft
                         </button>
@@ -290,7 +290,7 @@ export default function ConsultationsPage() {
                     responses, but a summary of comments may be published.
                   </p>
                 </div>
-                <button className="mt-5 inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-semibold text-textPrimary hover:border-secondary hover:text-secondary transition-colors">
+                <button className="mt-5 inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-semibold text-textPrimary hover:border-primary hover:text-primary transition-colors">
                   <Download className="h-4 w-4" />
                   Download Comment Form
                 </button>

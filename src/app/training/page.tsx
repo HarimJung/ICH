@@ -116,7 +116,7 @@ export default function TrainingPage() {
                 className={`rounded-full px-3.5 py-1 text-xs font-semibold border transition-all duration-200 ${
                   selectedType === t
                     ? "bg-primary text-white border-primary"
-                    : "bg-backgroundAlt text-textMuted border-border hover:border-secondary hover:text-secondary"
+                    : "bg-backgroundAlt text-textMuted border-border hover:border-primary hover:text-primary"
                 }`}
               >
                 {t.charAt(0).toUpperCase() + t.slice(1)}

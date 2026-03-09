@@ -174,7 +174,7 @@ export default function HomePage() {
                 key={i}
                 className="bg-white p-8 flex flex-col border-r border-border last:border-r-0 md:border-b-0 border-b"
               >
-                <div className="mb-4 w-10 h-10 flex items-center justify-center rounded-sm bg-[#EEF3FB]">
+                <div className="mb-4 w-10 h-10 flex items-center justify-center">
                   <item.icon className="h-5 w-5 text-primary" />
                 </div>
                 <p className="text-[17px] font-medium text-textPrimary leading-snug mb-2">
@@ -234,7 +234,7 @@ export default function HomePage() {
                 key={item.title}
                 className="bg-white border border-border rounded-sm p-6 flex flex-col shadow-card hover:shadow-cardHover transition-shadow duration-200"
               >
-                <div className="mb-4 w-10 h-10 flex items-center justify-center rounded-sm bg-[#EEF3FB]">
+                <div className="mb-4 w-10 h-10 flex items-center justify-center">
                   <item.icon className="h-5 w-5 text-primary" />
                 </div>
                 <h3 className="text-[15px] font-semibold text-textPrimary mb-2">

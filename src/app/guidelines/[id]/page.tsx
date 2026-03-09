@@ -129,7 +129,7 @@ export default function GuidelineDetailPage({ params }: { params: { id: string }
                       <button
                         key={tab}
                         onClick={() => setActiveTab(tab)}
-                        className={`px-4 py-3 text-[15px] font-medium whitespace-nowrap border-b-[3px] transition-colors ${activeTab === tab ? "border-secondary text-textPrimary font-semibold" : "border-transparent text-textMuted hover:text-textPrimary"}`}
+                        className={`px-4 py-3 text-[15px] font-medium whitespace-nowrap border-b-[3px] transition-colors ${activeTab === tab ? "border-primary text-textPrimary font-semibold" : "border-transparent text-textMuted hover:text-textPrimary"}`}
                       >
                         {tab}{badge}
                       </button>
@@ -158,7 +158,7 @@ export default function GuidelineDetailPage({ params }: { params: { id: string }
                   <div className="absolute left-[11px] top-2 bottom-2 w-0.5 bg-border" />
                   {documentHistory.map((entry, i) => (
                     <div key={i} className="relative mb-8 last:mb-0">
-                      <div className={`absolute -left-8 top-1 h-6 w-6 rounded-full border-2 flex items-center justify-center ${i === 0 ? "border-secondary bg-secondary/10" : "border-border bg-white"}`}>
+                      <div className={`absolute -left-8 top-1 h-6 w-6 rounded-full border-2 flex items-center justify-center ${i === 0 ? "border-primary bg-primary/10" : "border-border bg-white"}`}>
                         <div className={`h-2 w-2 rounded-full ${i === 0 ? "bg-secondary" : "bg-border"}`} />
                       </div>
                       <div className="bg-white border border-border p-5">
@@ -243,7 +243,7 @@ export default function GuidelineDetailPage({ params }: { params: { id: string }
                   </div>
                   <div className="flex items-center justify-between">
                     <p className="text-xs text-textMuted">Implementation status reflects adoption into local regulatory frameworks.</p>
-                    <button onClick={() => exportImplementationCSV(guideline)} className="shrink-0 flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm font-medium text-textPrimary hover:border-secondary hover:text-secondary transition-colors">
+                    <button onClick={() => exportImplementationCSV(guideline)} className="shrink-0 flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm font-medium text-textPrimary hover:border-primary hover:text-primary transition-colors">
                       <Download className="h-4 w-4" /> Export CSV
                     </button>
                   </div>

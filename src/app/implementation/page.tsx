@@ -141,7 +141,7 @@ export default function ImplementationPage() {
               onChange={(e) =>
                 setCategoryFilter(e.target.value as Category | "all")
               }
-              className="rounded-lg border border-border bg-white px-3 py-2 text-sm text-textPrimary focus:outline-none focus:border-secondary transition-colors"
+              className="rounded-lg border border-border bg-white px-3 py-2 text-sm text-textPrimary focus:outline-none focus:border-primary transition-colors"
             >
               <option value="all">All Categories</option>
               {categories.map((cat) => (
@@ -154,7 +154,7 @@ export default function ImplementationPage() {
             <select
               value={memberFilter}
               onChange={(e) => setMemberFilter(e.target.value)}
-              className="rounded-lg border border-border bg-white px-3 py-2 text-sm text-textPrimary focus:outline-none focus:border-secondary transition-colors"
+              className="rounded-lg border border-border bg-white px-3 py-2 text-sm text-textPrimary focus:outline-none focus:border-primary transition-colors"
             >
               <option value="all">All Members</option>
               {members.map((m) => (
@@ -172,7 +172,7 @@ export default function ImplementationPage() {
                   setShowFullOnly(!showFullOnly);
                   if (!showFullOnly) setShowPartialOnly(false);
                 }}
-                className="h-4 w-4 rounded border-border text-secondary focus:ring-secondary"
+                className="h-4 w-4 rounded border-border text-secondary focus:ring-primary"
               />
               <span className="text-sm text-textPrimary">Fully implemented</span>
             </label>
@@ -185,7 +185,7 @@ export default function ImplementationPage() {
                   setShowPartialOnly(!showPartialOnly);
                   if (!showPartialOnly) setShowFullOnly(false);
                 }}
-                className="h-4 w-4 rounded border-border text-secondary focus:ring-secondary"
+                className="h-4 w-4 rounded border-border text-secondary focus:ring-primary"
               />
               <span className="text-sm text-textPrimary">
                 Partially implemented
@@ -194,7 +194,7 @@ export default function ImplementationPage() {
 
             <button
               onClick={() => exportMatrixCSV(filtered)}
-              className="ml-auto flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm font-medium text-textPrimary hover:border-secondary hover:text-secondary transition-colors"
+              className="ml-auto flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm font-medium text-textPrimary hover:border-primary hover:text-primary transition-colors"
             >
               <Download className="h-4 w-4" />
               Export CSV

@@ -73,7 +73,7 @@ export default function MedDRAPage() {
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                 <div>
                   <div className="flex items-center gap-3 mb-2">
-                    <div className="flex h-9 w-9 items-center justify-center bg-[#EEF3FB]">
+                    <div className="flex h-9 w-9 items-center justify-center">
                       <Globe className="h-4 w-4 text-primary" />
                     </div>
                     <h3 className="text-[17px] font-semibold text-textPrimary">
