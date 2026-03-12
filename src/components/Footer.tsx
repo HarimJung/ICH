@@ -51,14 +51,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           {/* Logo column */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center mb-5 inline-block">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/Logo.png"
-                alt="ICH Logo"
-                className="h-[40px] w-auto object-contain brightness-0 invert opacity-90"
-              />
-            </Link>
+            <div className="flex items-center gap-2.5 mb-5">
+              <div className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center">
+                <span className="text-white font-bold text-sm">ICH</span>
+              </div>
+              <span className="text-white font-bold text-xl tracking-tight">
+                ICH
+              </span>
+            </div>
             <p className="text-sm text-white/50 leading-relaxed max-w-[240px]">
               International Council for Harmonisation of Technical Requirements
               for Pharmaceuticals for Human Use.
