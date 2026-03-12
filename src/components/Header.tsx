@@ -54,9 +54,10 @@ export default function Header() {
         <Link href="/" className="flex items-center flex-shrink-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/Logo.png"
+            src="/ich-logo-official.png"
             alt="ICH Logo"
-            className="h-[40px] w-auto object-contain"
+            className="h-10 w-auto object-contain"
+            style={{ height: "40px", width: "auto" }}
           />
         </Link>
 
