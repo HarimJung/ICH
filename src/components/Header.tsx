@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Search, User, Menu, X, ChevronDown } from "lucide-react";
 
@@ -52,9 +53,14 @@ export default function Header() {
       <div className="container-content flex items-center gap-6 h-[60px]">
         {/* Logo */}
         <Link href="/" className="flex items-center flex-shrink-0">
-          <span className="text-[22px] font-bold text-primary tracking-tight leading-none">
-            ich
-          </span>
+          <Image
+            src="/Logo.png"
+            alt="ICH Logo"
+            width={140}
+            height={51}
+            className="h-10 w-auto object-contain"
+            priority
+          />
         </Link>
 
         {/* Search bar — center */}
@@ -65,9 +71,8 @@ export default function Header() {
             placeholder="Search everything"
             onFocus={() => setSearchFocused(true)}
             onBlur={() => setSearchFocused(false)}
-            className={`w-full h-9 bg-[#F2F3F5] rounded-sm pl-9 pr-4 text-[14px] text-textPrimary placeholder:text-textSecondary transition-all outline-none ${
-              searchFocused ? "ring-1 ring-primary/40 bg-white" : ""
-            }`}
+            className={`w-full h-9 bg-[#F2F3F5] rounded-sm pl-9 pr-4 text-[14px] text-textPrimary placeholder:text-textSecondary transition-all outline-none ${searchFocused ? "ring-1 ring-primary/40 bg-white" : ""
+              }`}
           />
         </div>
 
