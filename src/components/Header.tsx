@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Search, User, Menu, X, ChevronDown } from "lucide-react";
 
@@ -53,13 +52,11 @@ export default function Header() {
       <div className="container-content flex items-center gap-6 h-[60px]">
         {/* Logo */}
         <Link href="/" className="flex items-center flex-shrink-0">
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src="/Logo.png"
             alt="ICH Logo"
-            width={140}
-            height={51}
-            className="h-10 w-auto object-contain"
-            priority
+            className="h-[40px] w-auto object-contain"
           />
         </Link>
 

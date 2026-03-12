@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 const footerColumns = [
   {
@@ -53,12 +52,11 @@ export default function Footer() {
           {/* Logo column */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center mb-5 inline-block">
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src="/Logo.png"
                 alt="ICH Logo"
-                width={140}
-                height={51}
-                className="h-10 w-auto object-contain brightness-0 invert opacity-90"
+                className="h-[40px] w-auto object-contain brightness-0 invert opacity-90"
               />
             </Link>
             <p className="text-sm text-white/50 leading-relaxed max-w-[240px]">
